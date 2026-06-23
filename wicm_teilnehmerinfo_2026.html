@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Teilnehmerinfos – City Marathon Wiesbaden 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;0,9..40,900;1,9..40,400&family=DM+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --orange: #F07800;
+    --orange-dark: #C96200;
+    --orange-light: #FFF3E0;
+    --dark: #1C1C1E;
+    --mid: #4A4A4A;
+    --light: #F5F5F5;
+    --white: #FFFFFF;
+    --border: #E0E0E0;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--white); color: var(--dark); font-size: 15px; line-height: 1.65; }
+
+  .topbar { background: var(--dark); color: #bbb; font-size: 12px; font-family: 'DM Sans', sans-serif; font-weight: 500; padding: 8px 40px; display: flex; justify-content: space-between; align-items: center; letter-spacing: 0.03em; }
+  .topbar a { color: var(--orange); text-decoration: none; }
+
+  .site-header { background: var(--white); border-bottom: 3px solid var(--orange); padding: 14px 40px; display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 16px; }
+  .site-header img.logo { height: 52px; width: auto; }
+  .site-header .header-title { font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--mid); line-height: 1.3; }
+  .site-header .header-title span { display: block; font-size: 11px; font-weight: 500; color: #999; text-transform: none; letter-spacing: 0; margin-top: 2px; }
+  .presented-by { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+  .presented-by span { font-family: 'DM Sans', sans-serif; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: #bbb; white-space: nowrap; }
+  @media (max-width: 640px) {
+    .site-header { grid-template-columns: auto 1fr; padding: 12px 20px; }
+    .presented-by { grid-column: 1 / -1; justify-content: flex-start; padding-top: 10px; border-top: 1px solid var(--border); gap: 12px; }
+    .presented-by img { height: 24px !important; }
+  }
+
+  .hero { position: relative; background: var(--dark); min-height: 340px; overflow: hidden; display: flex; flex-direction: column; justify-content: flex-end; }
+  .hero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.45; }
+  .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(28,28,30,0.92) 0%, rgba(28,28,30,0.4) 60%, transparent 100%); }
+  .hero-inner { position: relative; z-index: 2; padding: 48px 40px 36px; max-width: 760px; }
+  .hero-eyebrow { display: inline-block; background: var(--orange); color: var(--white); font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; padding: 4px 12px; margin-bottom: 14px; }
+  .hero h1 { font-family: 'DM Sans', sans-serif; font-size: clamp(32px, 6vw, 58px); font-weight: 900; color: var(--white); line-height: 1.05; margin-bottom: 12px; text-transform: uppercase; letter-spacing: -0.01em; }
+  .hero h1 em { color: var(--orange); font-style: normal; }
+  .hero-meta { color: rgba(255,255,255,0.8); font-size: 15px; font-weight: 500; font-family: 'DM Sans', sans-serif; }
+  .hero-meta strong { color: var(--white); }
+
+  .countdown-bar { background: var(--orange); color: var(--white); padding: 14px 40px; display: flex; align-items: center; gap: 8px; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 0.06em; }
+  .cd-units { display: flex; gap: 20px; align-items: baseline; }
+  .cd-unit { display: flex; align-items: baseline; gap: 5px; }
+  .cd-num { font-size: 30px; font-weight: 900; line-height: 1; }
+  .cd-label { font-size: 11px; font-weight: 600; opacity: 0.85; }
+  .cd-suffix { font-size: 13px; opacity: 0.8; margin-left: 8px; }
+
+  .sticky-nav { position: sticky; top: 0; z-index: 100; background: var(--white); border-bottom: 2px solid var(--border); padding: 0 40px; display: flex; flex-wrap: wrap; gap: 0; }
+  .sticky-nav a { display: block; padding: 10px 16px; font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--mid); text-decoration: none; border-bottom: 3px solid transparent; white-space: nowrap; transition: all 0.15s; }
+  .sticky-nav a:hover, .sticky-nav a.active { color: var(--orange); border-color: var(--orange); }
+  @media (max-width: 700px) { .sticky-nav { padding: 0 12px; } .sticky-nav a { padding: 8px 10px; font-size: 11px; } }
+
+  .container { max-width: 920px; margin: 0 auto; padding: 0 40px; }
+  .section { padding: 52px 0 44px; border-bottom: 1px solid var(--border); }
+  .section-eyebrow { font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em; color: var(--orange); margin-bottom: 6px; }
+  .section h2 { font-family: 'DM Sans', sans-serif; font-size: clamp(22px, 4vw, 32px); font-weight: 900; text-transform: uppercase; letter-spacing: -0.01em; margin-bottom: 28px; color: var(--dark); }
+
+  .resend-box { background: var(--light); border: 2px solid var(--orange); border-radius: 4px; padding: 22px 28px; margin-bottom: 28px; display: flex; gap: 16px; align-items: flex-start; }
+  .resend-box .rb-icon { font-size: 28px; flex-shrink: 0; }
+  .resend-box h3 { font-family: 'DM Sans', sans-serif; font-size: 16px; font-weight: 700; margin-bottom: 6px; color: var(--dark); }
+  .resend-box p { font-size: 14px; color: var(--mid); line-height: 1.55; }
+  .resend-box ul { list-style: none; padding: 0; margin-top: 8px; }
+  .resend-box ul li { font-size: 14px; color: var(--mid); padding: 2px 0; }
+  .resend-box ul li::before { content: '✓ '; color: var(--orange); font-weight: 700; }
+
+  .startzeit-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 3px; margin-bottom: 12px; }
+  @media (max-width: 680px) { .startzeit-grid { grid-template-columns: repeat(2, 1fr); } }
+  .sz-card { background: var(--light); padding: 22px 18px; border-top: 4px solid var(--border); transition: border-color 0.15s; display: flex; flex-direction: column; justify-content: flex-end; min-height: 130px; }
+  .sz-card:hover { border-color: var(--orange); }
+  .sz-dist { font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: var(--mid); margin-bottom: 8px; line-height: 1.3; }
+  .sz-time { font-family: 'DM Sans', sans-serif; font-size: 36px; font-weight: 900; color: var(--orange); line-height: 1; margin-bottom: 6px; }
+  .sz-note { font-size: 12px; color: #888; }
+  .cutoff-bar { background: var(--dark); color: var(--white); padding: 13px 20px; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 0.02em; text-transform: uppercase; }
+  .cutoff-bar span { color: var(--orange); }
+
+  .strecken-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 3px; margin-bottom: 24px; }
+  .strecke-card { border: 1px solid var(--border); overflow: hidden; transition: box-shadow 0.15s; display: flex; flex-direction: column; }
+  .strecke-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+  .strecke-card img { width: 100%; height: 160px; object-fit: cover; display: block; }
+  .strecke-card-body { padding: 16px; flex: 1; display: flex; flex-direction: column; }
+  .strecke-card-body h3 { font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 800; text-transform: uppercase; margin-bottom: 6px; color: var(--dark); line-height: 1.2; }
+  .strecke-card-body p { font-size: 13px; color: var(--mid); margin-bottom: 12px; line-height: 1.5; flex: 1; }
+  .strecke-links { display: flex; gap: 8px; flex-wrap: wrap; margin-top: auto; }
+
+  .btn-small { display: inline-block; padding: 7px 14px; font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; text-decoration: none; transition: all 0.15s; border: 1px solid transparent; }
+  .btn-primary { background: var(--orange); color: var(--white); }
+  .btn-primary:hover { background: var(--orange-dark); }
+  .btn-outline { border-color: var(--orange); color: var(--orange); background: transparent; }
+  .btn-outline:hover { background: var(--orange); color: var(--white); }
+
+  .timeline { padding-left: 28px; position: relative; margin-bottom: 24px; }
+  .timeline::before { content: ''; position: absolute; left: 7px; top: 8px; bottom: 8px; width: 2px; background: var(--border); }
+  .tl-item { position: relative; margin-bottom: 24px; }
+  .tl-item::before { content: ''; position: absolute; left: -24px; top: 6px; width: 12px; height: 12px; border-radius: 50%; background: var(--orange); border: 2px solid var(--white); outline: 2px solid var(--orange); }
+  .tl-day { font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #999; margin-bottom: 2px; }
+  .tl-title { font-family: 'DM Sans', sans-serif; font-size: 16px; font-weight: 800; color: var(--dark); margin-bottom: 3px; }
+  .tl-detail { font-size: 14px; color: var(--mid); }
+  .tl-warn { display: inline-block; background: #D32F2F; color: var(--white); font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 700; padding: 3px 10px; text-transform: uppercase; letter-spacing: 0.06em; margin-top: 6px; }
+
+  .info-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 3px; margin-bottom: 20px; }
+  .info-card { background: var(--light); padding: 22px 20px; border-radius: 2px; }
+  .info-card .ic-icon { font-size: 26px; margin-bottom: 10px; display: block; }
+  .info-card .ic-title { font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px; color: var(--dark); }
+  .info-card p, .info-card li { font-size: 13px; color: var(--mid); line-height: 1.6; }
+  .info-card ul { list-style: none; padding: 0; }
+  .info-card ul li { padding: 3px 0; }
+  .info-card ul li::before { content: '→ '; color: var(--orange); font-weight: 700; }
+
+  .address-bar { background: var(--dark); color: var(--white); padding: 16px 20px; font-family: 'DM Sans', sans-serif; font-size: 17px; font-weight: 800; display: flex; align-items: center; gap: 10px; margin-bottom: 8px; flex-wrap: wrap; }
+  .address-bar a { color: var(--orange); font-size: 12px; font-weight: 700; text-decoration: none; text-transform: uppercase; letter-spacing: 0.06em; margin-left: auto; border-bottom: 1px solid var(--orange); }
+  .schloss-warn { background: #FFF3E0; border: 2px solid var(--orange); padding: 12px 18px; font-weight: 700; font-size: 14px; margin-bottom: 16px; display: flex; gap: 10px; align-items: center; font-family: 'DM Sans', sans-serif; }
+
+  .map-embed { width: 100%; height: 300px; border: 0; display: block; margin-bottom: 16px; }
+
+  .gelaende-img { width: 100%; display: block; margin-bottom: 12px; border: 1px solid var(--border); }
+
+  .verpf-strip { display: flex; gap: 3px; margin-bottom: 16px; overflow-x: auto; }
+  .vp-item { flex: 1; min-width: 110px; background: var(--light); padding: 14px 12px; text-align: center; border-top: 3px solid var(--border); }
+  .vp-item.finish { background: var(--dark); border-color: var(--orange); }
+  .vp-km { font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 900; color: var(--orange); display: block; margin-bottom: 3px; }
+  .vp-label { font-size: 11px; color: #666; font-weight: 500; line-height: 1.4; }
+  .vp-item.finish .vp-label { color: #aaa; }
+
+  .tapering-box { background: var(--light); border-left: 4px solid var(--orange); padding: 20px 24px; margin-bottom: 20px; }
+  .tapering-box h3 { font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 800; text-transform: uppercase; margin-bottom: 10px; }
+  .tapering-box ul { list-style: none; padding: 0; }
+  .tapering-box ul li { font-size: 14px; color: var(--mid); padding: 4px 0; line-height: 1.5; }
+  .tapering-box ul li::before { content: '☀️ '; }
+
+  .notfall-box { background: var(--orange); color: var(--white); padding: 26px 28px; display: flex; gap: 18px; align-items: flex-start; margin-bottom: 16px; }
+  .notfall-box .nb-icon { font-size: 34px; flex-shrink: 0; }
+  .notfall-box h3 { font-family: 'DM Sans', sans-serif; font-size: 18px; font-weight: 800; text-transform: uppercase; margin-bottom: 4px; }
+  .notfall-box p { font-size: 13px; opacity: 0.9; line-height: 1.5; }
+  .notfall-box .tel { font-family: 'DM Sans', sans-serif; font-size: 30px; font-weight: 900; display: block; margin-top: 4px; }
+
+  .dl-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 3px; }
+  .dl-card { display: block; padding: 20px 18px; background: var(--light); color: var(--dark); text-decoration: none; border-top: 3px solid var(--border); transition: all 0.15s; border-radius: 0 0 2px 2px; }
+  .dl-card:hover { background: var(--orange-light); border-color: var(--orange); }
+  .dl-card .dc-icon { font-size: 22px; margin-bottom: 8px; display: block; }
+  .dl-card .dc-title { font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 800; text-transform: uppercase; margin-bottom: 3px; }
+  .dl-card .dc-sub { font-size: 12px; color: #888; }
+
+
+  .footer { background: var(--dark); color: #888; padding: 32px 40px; font-size: 13px; line-height: 1.7; }
+  .footer a { color: #aaa; text-decoration: none; }
+  .footer a:hover { color: var(--orange); }
+  .footer-top { display: flex; align-items: flex-start; gap: 32px; margin-bottom: 20px; flex-wrap: wrap; }
+  .footer-logo img { height: 44px; opacity: 0.85; }
+  .footer-name { font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 700; color: var(--white); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 4px; }
+
+  p + p { margin-top: 10px; }
+  p { margin-bottom: 0; }
+
+  @media (max-width: 600px) {
+    .topbar, .site-header, .hero-inner, .countdown-bar, .sticky-nav, .container { padding-left: 20px; padding-right: 20px; }
+    .hero h1 { font-size: 30px; }
+    .notfall-box { flex-direction: column; }
+    .address-bar { font-size: 14px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <span>City Marathon Wiesbaden 2026 · 20. Juni 2026</span>
+  <a href="mailto:info@wiesbaden-marathon.de">info@wiesbaden-marathon.de</a>
+</div>
+
+<div style="background:var(--dark);padding:10px 40px;display:flex;justify-content:flex-end;align-items:center;gap:8px;">
+  <span style="font-family:'DM Sans',sans-serif;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#666;">Language:</span>
+  <span style="font-family:'DM Sans',sans-serif;font-size:12px;font-weight:800;color:var(--orange);">DE</span>
+  <span style="color:#444;">|</span>
+  <a href="https://sporthilfe-wiesbaden.de/files/wicm_teilnehmerinfo_2026_en.html" style="font-family:'DM Sans',sans-serif;font-size:12px;font-weight:700;color:#888;text-decoration:none;letter-spacing:0.04em;" onmouseover="this.style.color='#F07800'" onmouseout="this.style.color='#888'">EN</a>
+</div>
+<header class="site-header">
+  <img class="logo" src="https://sporthilfe-wiesbaden.de/wp-content/uploads/2025/08/cmw_logo_4c-3.png" alt="City Marathon Wiesbaden">
+  <div class="header-title">
+    Teilnehmerinfos 2026
+    <span>Dein persönlicher Race Guide – Samstag, 20. Juni 2026</span>
+  </div>
+  <div class="presented-by">
+    <span>Presented by</span>
+    <a href="https://www.lucky-bike.de" target="_blank" style="display:flex;align-items:center;">
+      <img src="https://www.lucky-bike.de/out/antares/img/assets/logo.svg" alt="Lucky Bike" style="height:28px;width:auto;" onerror="this.style.display='none'">
+    </a>
+    <span style="color:#ddd;font-size:18px;margin:0 4px;">·</span>
+    <a href="https://www.backhaus-schroeer.de" target="_blank" style="display:flex;align-items:center;">
+      <img src="https://sporthilfe-wiesbaden.de/wp-content/uploads/2023/03/schroeers_logo_mit_storch.png" alt="Schröers" style="height:36px;width:auto;" onerror="this.style.display='none'">
+    </a>
+  </div>
+</header>
+
+<div class="hero">
+  <img class="hero-img" src="https://sporthilfe-wiesbaden.de/wp-content/uploads/2024/06/img_2847.jpg" alt="City Marathon Wiesbaden" onerror="this.style.display='none'">
+  <div class="hero-overlay"></div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Teilnehmer-Information</div>
+    <h1>Wiesbaden<br>City Marathon <em>2026</em></h1>
+    <p class="hero-meta">
+      <strong>20. Juni 2026</strong> &nbsp;·&nbsp;
+      Start &amp; Ziel: <strong>Kranzplatz, Wiesbaden</strong> &nbsp;·&nbsp;
+      Start ab 18:45 Uhr
+    </p>
+  </div>
+</div>
+
+<div class="countdown-bar">
+  <span style="opacity:0.7;font-size:12px;">NOCH</span>
+  <div class="cd-units">
+    <div class="cd-unit"><span class="cd-num" id="cd-days">–</span><span class="cd-label">Tage</span></div>
+  </div>
+  <span class="cd-suffix">bis zum Start</span>
+</div>
+
+<nav class="sticky-nav">
+  <a href="#wetter">☀️ Wetter</a>
+  <a href="#startzeiten">Startzeiten</a>
+  <a href="#bestaetigung">Bestätigung</a>
+  <a href="#ausgabe">Startnummern</a>
+  <a href="#strecke">Strecken</a>
+  <a href="#gelaende">Eventgelände</a>
+  <a href="#aenderungen">Änderungen</a>
+  <a href="#anreise">Anreise</a>
+  <a href="#verpflegung">Verpflegung</a>
+
+  <a href="#notfall">Notfall</a>
+  <a href="#downloads">Downloads</a>
+  <a href="#anwohner">Anwohner</a>
+  <a href="#faq">FAQ</a>
+</nav>
+
+<main>
+
+  <!-- INTRO -->
+  <section class="section" id="intro" style="background:var(--light);border-bottom:1px solid var(--border);">
+    <div class="container">
+      <div style="max-width:720px;">
+        <div style="font-family:'DM Sans',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.14em;color:var(--orange);margin-bottom:10px;">Nur noch <span id="intro-days">–</span> Tage bis zum Start!</div>
+        <p style="font-size:17px;line-height:1.7;color:var(--dark);margin-bottom:16px;">
+          Am <strong>20. Juni</strong> ist es endlich soweit – wir erwarten dich in der Landeshauptstadt Wiesbaden! Damit dein Renntag reibungslos läuft, haben wir alle wichtigen Infos für dich zusammengestellt. Bitte nimm dir kurz Zeit, die Änderungen zu lesen.
+        </p>
+        <div style="background:var(--white);border-left:5px solid var(--orange);padding:20px 24px;">
+          <div style="font-family:'DM Sans',sans-serif;font-size:15px;font-weight:800;color:var(--dark);margin-bottom:12px;">🛑 Neue Eventlocation &amp; geänderte Strecke</div>
+          <p style="font-size:14px;color:var(--mid);line-height:1.65;margin-bottom:12px;">
+            In Wiesbaden wird am 20. Juni viel los sein: Ein Fußball-WM-Spiel sorgt für volle Innenstädte und Fußgängerzonen, dazu kommt eine große Baustelle auf dem Schlossplatz. Um dir ein sicheres und reibungsloses Rennerlebnis zu garantieren, ziehen wir <strong>in Absprache mit den Behörden</strong> um:
+          </p>
+          <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:10px;">
+            <li style="display:flex;gap:12px;align-items:flex-start;font-size:14px;color:var(--mid);line-height:1.6;">
+              <span style="color:var(--orange);font-weight:800;flex-shrink:0;">→</span>
+              <span><strong style="color:var(--dark);">Neue Eventlocation &amp; Start/Ziel: Kranzplatz</strong> (nicht Schlossplatz!) – hier findest du Expo, Startnummernausgabe, Start, Ziel, Toiletten und Verpflegung.</span>
+            </li>
+            <li style="display:flex;gap:12px;align-items:flex-start;font-size:14px;color:var(--mid);line-height:1.6;">
+              <span style="color:var(--orange);font-weight:800;flex-shrink:0;">→</span>
+              <span><strong style="color:var(--dark);">Geänderte Strecke:</strong> Die Route wurde angepasst, um Fan-Strömen in der Fußgängerzone und der Baustelle auszuweichen. Aktuelle Streckenpläne findest du weiter unten.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WETTER -->
+  <section class="section" id="wetter">
+    <div class="container">
+      <div class="section-eyebrow">Aktuelle Wettervorhersage</div>
+      <h2>☀️ Wetter & Verpflegung</h2>
+
+      <div style="background:var(--orange-light);border-left:4px solid var(--orange);padding:20px 24px;margin-bottom:24px;">
+        <div style="font-family:'DM Sans',sans-serif;font-size:15px;font-weight:800;color:var(--dark);margin-bottom:8px;">Warmer Sommertag erwartet – wir sind vorbereitet!</div>
+        <p style="font-size:14px;color:var(--mid);line-height:1.65;">Die Vorhersagen kündigen einen warmen Sommertag an. Wir passen unser Konzept an, damit du sicher und gut hydriert ins Ziel kommst.</p>
+      </div>
+
+      <div class="info-grid">
+        <div class="info-card">
+          <span class="ic-icon">💧</span>
+          <div class="ic-title">Erweiterte Wasserversorgung</div>
+          <p>Wir richten zusätzliche Verpflegungspunkte ein. Alle <strong>1,5 km</strong> erwartet dich eine Station mit Erfrischungen und Getränken – nutze jede Gelegenheit!</p>
+        </div>
+        <div class="info-card">
+          <span class="ic-icon">🌳</span>
+          <div class="ic-title">Schattenzonen</div>
+          <p>Die Strecke führt durch mehrere Abschnitte mit angenehmem Schatten. Profitiere davon zum Regenerieren und Abkühlen.</p>
+        </div>
+        <div class="info-card">
+          <span class="ic-icon">🤝</span>
+          <div class="ic-title">Sicherheit & Monitoring</div>
+          <p>Unser Organisationsteam steht in engem Austausch mit den lokalen Behörden und dem <strong>Deutschen Wetterdienst</strong>. Alle Szenarien sind im Blick – kurzfristige Anpassungen kommunizieren wir sofort.</p>
+        </div>
+        <div class="info-card">
+          <span class="ic-icon">🧴</span>
+          <div class="ic-title">Deine Vorbereitung</div>
+          <ul>
+            <li>Jetzt schon viel trinken & Elektrolyte auffüllen</li>
+            <li>Kopfbedeckung & Sonnencreme mitbringen</li>
+            <li>Intensität in den letzten Tagen anpassen</li>
+            <li>Auf deinen Körper hören – und die Atmosphäre genießen!</li>
+          </ul>
+        </div>
+        <div class="info-card">
+          <span class="ic-icon">🏃</span>
+          <div class="ic-title">Trainingstipps letzte Tage</div>
+          <ul>
+            <li>Harte Arbeit ist getan – ruhig angehen, kurze lockere Läufe reichen</li>
+            <li>Viel schlafen und Kohlenhydratspeicher auffüllen</li>
+            <li>Trainingsintensität reduzieren (Tapering)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STARTZEITEN -->
+  <section class="section" id="startzeiten">
+    <div class="container">
+      <div class="section-eyebrow">Samstag, 20. Juni 2026</div>
+      <h2>Startzeiten</h2>
+      <div class="startzeit-grid">
+        <div class="sz-card">
+          <div class="sz-dist">10 km</div>
+          <div class="sz-time">18:45</div>
+          <div class="sz-note">Kranzplatz</div>
+        </div>
+        <div class="sz-card">
+          <div class="sz-dist">5 km</div>
+          <div class="sz-time">18:55</div>
+          <div class="sz-note">Kranzplatz</div>
+        </div>
+        <div class="sz-card">
+          <div class="sz-dist">Halbmarathon &amp; Marathon</div>
+          <div class="sz-time">19:00</div>
+          <div class="sz-note">Kranzplatz</div>
+        </div>
+        <div class="sz-card">
+          <div class="sz-dist">3 km</div>
+          <div class="sz-time">19:30</div>
+          <div class="sz-note">Kranzplatz</div>
+        </div>
+      </div>
+      <div class="cutoff-bar">
+        Zielschluss: <span>00:00 Uhr (Mitternacht)</span>
+        &nbsp;·&nbsp; Siegerehrungen: 20:00 / 21:00 / 23:00 Uhr
+      </div>
+    </div>
+  </section>
+
+  <!-- BESTÄTIGUNG / QR -->
+  <section class="section" id="bestaetigung">
+    <div class="container">
+      <div class="section-eyebrow">Rennwoche</div>
+      <h2>Deine Bestätigungsmail</h2>
+      <div class="resend-box">
+        <span class="rb-icon">📧</span>
+        <div>
+          <h3>Erneuter Versand in der Rennwoche</h3>
+          <p>In der Rennwoche (ca. 15./16. Juni) erhalten alle Teilnehmenden ihre <strong>Bestätigungsmail erneut</strong>. Diese enthält:</p>
+          <ul>
+            <li>QR-Code für die Startnummernausgabe (digital genügt, kein Ausdruck nötig)</li>
+            <li>Alle Anmeldungsdetails (Name, Distanz, Startblock)</li>
+            <li>RMV-Logo als Hinweis, falls du das RMV-Kombi-Ticket bei der Anmeldung gebucht hast</li>
+            <li>Wallet-Dateien (Apple Wallet / Google Wallet) für schnellen Zugriff</li>
+          </ul>
+          <p style="margin-top:10px;"><strong>Spam-Ordner prüfen</strong>, falls die Mail nicht ankommt. Bei Problemen: <a href="mailto:info@wiesbaden-marathon.de" style="color:var(--orange);">info@wiesbaden-marathon.de</a></p>
+        </div>
+      </div>
+      <div class="info-grid">
+        <div class="info-card">
+          <span class="ic-icon">📱</span>
+          <div class="ic-title">QR-Code</div>
+          <p>Smartphone reicht – Display hell und entsperrt halten.</p>
+        </div>
+        <div class="info-card">
+          <span class="ic-icon">🚆</span>
+          <div class="ic-title">RMV-Kombi-Ticket</div>
+          <p>Nur für Teilnehmende, die es bei der Anmeldung gebucht haben. Das RMV-Ticket ist <strong>kein separates Dokument</strong> – es ist im unteren Bereich deiner Anmeldebestätigung als <strong>RMV-Kombi-Logo</strong> integriert. Dieses Logo zusammen mit der Bestätigung gilt als Fahrausweis am Veranstaltungstag für An- und Abreise im gesamten RMV-Verbundraum.</p>
+        </div>
+        <div class="info-card">
+          <span class="ic-icon">👛</span>
+          <div class="ic-title">Apple / Google Wallet</div>
+          <p>Direkt aus der Mail zur Wallet hinzufügen – auch offline verfügbar.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STARTNUMMERNAUSGABE -->
+  <section class="section" id="ausgabe">
+    <div class="container">
+      <div class="section-eyebrow">Expo &amp; Ausgabe</div>
+      <h2>Startnummernausgabe</h2>
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-day">Fr, 19. Juni 2026</div>
+          <div class="tl-title">Startnummernausgabe + Expo</div>
+          <div class="tl-detail">16:00 – 19:00 Uhr &nbsp;·&nbsp; Kranzplatz, 65183 Wiesbaden</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-day">Sa, 20. Juni 2026</div>
+          <div class="tl-title">Startnummernausgabe + Expo</div>
+          <div class="tl-detail">Ausgabe: 10:00 – <strong>17:00 Uhr</strong> &nbsp;·&nbsp; Expo: 10:00 – 19:00 Uhr</div>
+          <div class="tl-detail">Kranzplatz, 65183 Wiesbaden</div>
+          <span class="tl-warn">⚠ Ausgabe schließt pünktlich 17:00 Uhr – danach keine Abholung mehr möglich!</span>
+        </div>
+      </div>
+      <div class="info-grid">
+        <div class="info-card">
+          <span class="ic-icon">🪪</span>
+          <div class="ic-title">Was mitbringen?</div>
+          <ul>
+            <li>Anmeldebestätigung / QR-Code (digital)</li>
+            <li>Lichtbildausweis</li>
+          </ul>
+        </div>
+        <div class="info-card">
+          <span class="ic-icon">📦</span>
+          <div class="ic-title">Was ist dabei?</div>
+          <ul>
+            <li>Startnummer mit integriertem Chip</li>
+            <li>Sicherheitsnadeln</li>
+          </ul>
+        </div>
+        <div class="info-card">
+          <span class="ic-icon">👥</span>
+          <div class="ic-title">Abholung für Dritte</div>
+          <p>Mit Vollmacht + Ausweiskopie möglich.</p>
+          <a href="https://sporthilfe-wiesbaden.de/files/Vollmacht_Authorisation_2026.pdf" target="_blank" class="btn-small btn-outline" style="margin-top:10px;display:inline-block;">Vollmacht PDF →</a>
+        </div>
+        
+    </div>
+
+      <div style="background:var(--light);border-left:4px solid var(--orange);padding:18px 24px;margin-top:4px;">
+        <div style="font-family:'DM Sans',sans-serif;font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:0.05em;color:var(--dark);margin-bottom:6px;">📮 Startnummer per Post</div>
+        <p style="font-size:14px;color:var(--mid);line-height:1.6;">Versandvorbereitung und Versand starten ab <strong>8. Juni</strong>. Bitte erst melden, wenn bis <strong>Dienstag, 17. Juni</strong> nichts angekommen ist – dann gibt es Ersatz bei der Ausgabe vor Ort. Der Chip ist in der Startnummer integriert – nicht knicken!</p>
+        <p style="margin-top:8px;font-size:13px;color:#D32F2F;font-weight:600;">Startnummer per Post ist nicht mehr buchbar.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- STRECKEN -->
+  <section class="section" id="strecke">
+    <div class="container">
+      <div class="section-eyebrow">Strecken 2026</div>
+      <h2>Strecken 2026</h2>
+      <p style="margin-bottom:20px;color:var(--mid);">Start und Ziel am <strong>Kranzplatz</strong>. Bitte aktuelle Streckenpläne vor dem Event ansehen.</p>
+      <div class="strecken-grid">
+        <div class="strecke-card">
+          <img src="https://sporthilfe-wiesbaden.de/wp-content/uploads/2026/05/3k-450x300.jpg" alt="3 km Strecke">
+          <div class="strecke-card-body">
+            <h3>3 km</h3>
+            <p>Sa, 20. Juni – 19:30 Uhr<br>Für Kinder, Sportabzeichen &amp; Erwachsene</p>
+            <div class="strecke-links">
+              <a href="https://web.bikemap.net/r/18559517" target="_blank" class="btn-small btn-primary">Strecke ansehen</a>
+              <a href="https://sporthilfe-wiesbaden.de/files/WICM26_3K.gpx" class="btn-small btn-outline">GPX</a>
+            </div>
+          </div>
+        </div>
+        <div class="strecke-card">
+          <img src="https://sporthilfe-wiesbaden.de/wp-content/uploads/2026/05/5k-450x300.jpg" alt="5 km Strecke">
+          <div class="strecke-card-body">
+            <h3>5 km</h3>
+            <p>Sa, 20. Juni – 18:55 Uhr</p>
+            <div class="strecke-links">
+              <a href="https://web.bikemap.net/r/18559482" target="_blank" class="btn-small btn-primary">Strecke ansehen</a>
+              <a href="https://sporthilfe-wiesbaden.de/files/WICM26_5K.gpx" class="btn-small btn-outline">GPX</a>
+            </div>
+          </div>
+        </div>
+        <div class="strecke-card">
+          <img src="https://sporthilfe-wiesbaden.de/wp-content/uploads/2026/05/10k-450x300.jpg" alt="10 km Strecke">
+          <div class="strecke-card-body">
+            <h3>10 km</h3>
+            <p>Sa, 20. Juni – 18:45 Uhr<br>1 große Runde + 1 Innenrunde</p>
+            <div class="strecke-links">
+              <a href="https://web.bikemap.net/r/18559035" target="_blank" class="btn-small btn-primary">Strecke ansehen</a>
+              <a href="https://sporthilfe-wiesbaden.de/files/WICM26_10K.gpx" class="btn-small btn-outline">GPX</a>
+            </div>
+          </div>
+        </div>
+        <div class="strecke-card">
+          <img src="https://sporthilfe-wiesbaden.de/wp-content/uploads/2026/05/m_hm-450x300.jpg" alt="Halbmarathon &amp; Marathon">
+          <div class="strecke-card-body">
+            <h3>Halbmarathon &amp; Marathon</h3>
+            <p>Sa, 20. Juni – 19:00 Uhr<br>21,1 km (3 Runden) / 42,2 km (6 Runden)</p>
+            <div class="strecke-links">
+              <a href="https://web.bikemap.net/r/18444340" target="_blank" class="btn-small btn-primary">Strecke ansehen</a>
+              <a href="https://sporthilfe-wiesbaden.de/files/WICM26_M_HM.gpx" class="btn-small btn-outline">GPX</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- EVENTGELÄNDE -->
+  <section class="section" id="gelaende">
+    <div class="container">
+      <div class="section-eyebrow">Kranzplatz, Wiesbaden</div>
+      <h2>Eventgelände</h2>
+      <img src="https://sporthilfe-wiesbaden.de/wp-content/uploads/2026/06/kranzplatz2026.png" alt="Eventgelände 2026" class="gelaende-img" onerror="this.style.display='none'">
+      <div class="info-grid">
+        <div class="info-card">
+          <span class="ic-icon">🏁</span>
+          <div class="ic-title">Auf dem Gelände</div>
+          <ul>
+            <li>Start &amp; Ziel</li>
+            <li>Expo &amp; Startnummernausgabe</li>
+            <li>Erste Hilfe / Sanitäter</li>
+            <li>Toiletten</li>
+            <li>Ziel-Verpflegung</li>
+          </ul>
+        </div>
+        <div class="info-card">
+          <span class="ic-icon">🎽</span>
+          <div class="ic-title">Expo</div>
+          <ul>
+            <li>Fr 19.6.: 16:00 – 19:00 Uhr</li>
+            <li>Sa 20.6.: 10:00 – 19:00 Uhr</li>
+          </ul>
+          <div style="margin-top:10px;padding-top:10px;border-top:1px solid var(--border);display:flex;flex-direction:column;gap:6px;font-size:13px;color:var(--mid);">
+            <div style="margin-top:4px;"><strong style="color:var(--dark);">🎒 Beutelzelt</strong> <span style="font-size:11px;color:#888;">Sa 20. Juni – geöffnet bis alle Teilnehmenden ihr Gepäck abgeholt haben</span><br>Eigene Tasche mitbringen und gut lesbar mit der Startnummer beschriften. Keine Haftung für abgegebenes Gepäck.</div>
+            <div><strong style="color:var(--dark);">👕 Finisher-Shirt</strong><br>Abholung am Samstag ab 10:00 Uhr bis Zielschluss (00:00 Uhr) – also auch noch nach dem Lauf. Einfach Startnummer vorzeigen. Nachkaufen vor Ort ebenfalls möglich.</div>
+            <div><strong style="color:var(--dark);">🏅 Medaillengravur</strong><br>Nach dem Rennen am Startnummerngezelt.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ANMELDUNG ÄNDERN / STORNO -->
+  <section class="section" id="aenderungen">
+    <div class="container">
+      <div class="section-eyebrow">Anmeldung verwalten</div>
+      <h2>Abmeldung, Distanzwechsel &amp; Startplatzübertragung</h2>
+
+      <div class="strecken-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px,1fr));">
+
+        <!-- ABMELDUNG -->
+        <div class="strecke-card">
+          <div style="background:var(--dark);padding:20px 18px;">
+            <div style="font-family:'DM Sans',sans-serif;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--orange);margin-bottom:6px;">Abmeldung</div>
+            <div style="font-family:'DM Sans',sans-serif;font-size:20px;font-weight:900;color:var(--white);line-height:1.1;">Anmeldung<br>stornieren</div>
+          </div>
+          <div class="strecke-card-body">
+            <p style="margin-bottom:14px;font-size:13px;color:var(--mid);">Abmeldung von der Startliste per E-Mail an <a href="mailto:info@wiesbaden-marathon.de" style="color:var(--orange);">info@wiesbaden-marathon.de</a> weiterhin möglich.</p>
+            <div style="background:var(--light);padding:14px;margin-bottom:12px;">
+              <div style="font-family:'DM Sans',sans-serif;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px;color:var(--mid);">Rückerstattung</div>
+              <div style="display:flex;flex-direction:column;gap:6px;">
+                <div style="display:flex;justify-content:space-between;align-items:center;font-size:13px;padding:8px;background:#FFEBEE;">
+                  <span style="color:var(--mid);font-weight:600;">Seit 01.06.2026</span>
+                  <span style="font-weight:800;color:#D32F2F;">Keine Rückerstattung mehr möglich</span>
+                </div>
+              </div>
+            </div>
+            <p style="font-size:13px;color:var(--mid);">Da das Event in der finalen Durchführungsphase ist und alle Ressourcen auf die gemeldeten Teilnehmenden ausgerichtet sind, ist eine Rückerstattung leider nicht mehr möglich. Wir danken dir für dein Verständnis.</p>
+          </div>
+        </div>
+
+        <!-- DISTANZWECHSEL -->
+        <div class="strecke-card">
+          <div style="background:var(--orange);padding:20px 18px;">
+            <div style="font-family:'DM Sans',sans-serif;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.7);margin-bottom:6px;">Distanzwechsel</div>
+            <div style="font-family:'DM Sans',sans-serif;font-size:20px;font-weight:900;color:var(--white);line-height:1.1;">Strecke<br>ändern</div>
+          </div>
+          <div class="strecke-card-body">
+            <p style="margin-bottom:14px;font-size:13px;color:var(--mid);">Nur noch direkt bei der Startnummernausgabe vor Ort möglich – keine Änderung per E-Mail.</p>
+            <div style="background:var(--light);padding:14px;margin-bottom:12px;">
+              <div style="font-family:'DM Sans',sans-serif;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px;color:var(--mid);">Kosten</div>
+              <div style="display:flex;flex-direction:column;gap:6px;font-size:13px;">
+                <div style="display:flex;justify-content:space-between;">
+                  <span style="color:var(--mid);">Längere Distanz</span>
+                  <span style="font-weight:700;">Differenz zahlen</span>
+                </div>
+                <div style="display:flex;justify-content:space-between;">
+                  <span style="color:var(--mid);">Kürzere Distanz</span>
+                  <span style="font-weight:700;color:#888;">keine Rückzahlung</span>
+                </div>
+              </div>
+            </div>
+            <p style="font-size:12px;color:#888;">In der Mail bitte aktuelle und gewünschte Distanz angeben.</p>
+          </div>
+        </div>
+      </div>
+  </section>
+
+  <!-- ANREISE -->
+  <section class="section" id="anreise">
+    <div class="container">
+      <div class="section-eyebrow">Anreise &amp; Parken</div>
+      <h2>So kommst du hin</h2>
+      <div class="address-bar">
+        📍 Kranzplatz, 65183 Wiesbaden
+        <a href="https://maps.google.com/?q=Kranzplatz,+65183+Wiesbaden" target="_blank">Google Maps →</a>
+      </div>
+      <div class="schloss-warn">
+        <span>🚫</span>
+        Nicht zum Schlossplatz! Der Kranzplatz ist 2026 die Eventlocation.
+      </div>
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d888.4541948960252!2d8.241758039587998!3d50.086293535154795!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47bdbdd9b6001cf7%3A0xbbfc73547a9c3443!2sKranzpl.%2C%2065183%20Wiesbaden!5e1!3m2!1sen!2sde!4v1780659882791!5m2!1sen!2sde"
+        class="map-embed"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+      <div class="info-grid">
+        <div class="info-card">
+          <span class="ic-icon">🚆</span>
+          <div class="ic-title">ÖPNV – Empfohlen</div>
+          <ul>
+            <li>Hauptbahnhof: 20–25 Min zu Fuß</li>
+            <li>Bus 1, 8 → Haltestelle <strong>Kochbrunnenplatz</strong></li>
+            <li><a href="https://www.eswe-verkehr.de/umleitungen/city-marathon-busse-werden-umgeleitet.html" target="_blank" style="color:var(--orange);">ESWE Umleitungsinfos zum City Marathon →</a></li>
+            <li>RMV-Ticket (wenn gebucht) nutzen</li>
+          </ul>
+        </div>
+        <div class="info-card">
+          <span class="ic-icon">🚗</span>
+          <div class="ic-title">Parken</div>
+          <ul>
+            <li>Parkhaus Theater (~10 Min Fußweg)</li>
+            <li>Parkhaus Bowling Green (~5 Min Fußweg)</li>
+            <li>Parkhaus Luisenplatz (~5 Min, keine Beeinträchtigung 2026)</li>
+            <li>Frühzeitig anreisen – Innenstadt voll!</li>
+          </ul>
+        </div>
+        <div class="info-card">
+          <span class="ic-icon">⚠️</span>
+          <div class="ic-title">Sperrungen</div>
+          <ul>
+            <li>Streckensperrung ab <strong>18:15 Uhr</strong></li>
+            <li>Innenstadt: Fußball-WM &amp; Marathon</li>
+            <li>Mind. 90 Min vor Start anreisen</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VERPFLEGUNG -->
+  <section class="section" id="verpflegung">
+    <div class="container">
+      <div class="section-eyebrow">Auf der Strecke</div>
+      <h2>Verpflegung</h2>
+      <p style="margin-bottom:24px;color:var(--mid);">Pro Runde gibt es <strong>5 Verpflegungspunkte</strong> – alle ca. 1,5 km eine Station: Nerotal, Taunusstraße (Hinweg), Fichtestraße, Taunusstraße (Rückweg), Kranzplatz/Ziel.</p>
+
+      <!-- RUNDEN-DIAGRAMM -->
+      <div style="overflow-x:auto;margin-bottom:8px;padding:0 12px;">
+        <div style="min-width:620px;padding:8px 0;">
+
+          <!-- Streckenband -->
+          <div style="position:relative;height:80px;margin:0 0 6px;">
+            <div style="position:absolute;top:50%;left:0;right:0;height:4px;background:var(--border);transform:translateY(-50%);border-radius:2px;"></div>
+            <div style="position:absolute;top:50%;left:0;width:100%;height:4px;background:linear-gradient(to right, var(--orange) 0%, var(--orange) 100%);transform:translateY(-50%);border-radius:2px;opacity:0.25;"></div>
+
+            <!-- START -->
+            <div style="position:absolute;left:0;top:50%;transform:translate(-4px,-50%);">
+              <div style="width:20px;height:20px;border-radius:50%;background:var(--dark);border:3px solid var(--white);outline:2px solid var(--dark);display:flex;align-items:center;justify-content:center;">
+                <div style="width:6px;height:6px;border-radius:50%;background:var(--white);"></div>
+              </div>
+            </div>
+
+            <!-- VP1: Nerotal (~1.5km) -->
+            <div style="position:absolute;left:20%;top:50%;transform:translate(-50%,-50%);">
+              <div style="font-size:10px;font-weight:700;color:#1565C0;font-family:'DM Sans',sans-serif;margin-bottom:4px;text-align:center;">~1,5 km</div>
+              <div style="width:16px;height:16px;border-radius:50%;background:#1565C0;border:2px solid var(--white);outline:2px solid #1565C0;margin:0 auto;"></div>
+            </div>
+
+            <!-- VP2: Taunusstraße Hinweg (~3km) -->
+            <div style="position:absolute;left:38%;top:50%;transform:translate(-50%,-50%);">
+              <div style="font-size:10px;font-weight:700;color:var(--orange);font-family:'DM Sans',sans-serif;margin-bottom:4px;text-align:center;">~3 km</div>
+              <div style="width:16px;height:16px;border-radius:50%;background:var(--orange);border:2px solid var(--white);outline:2px solid var(--orange);margin:0 auto;"></div>
+            </div>
+
+            <!-- VP3: Fichtestraße (~5km – Wendepunkt) -->
+            <div style="position:absolute;left:56%;top:50%;transform:translate(-50%,-50%);">
+              <div style="font-size:10px;font-weight:700;color:#1565C0;font-family:'DM Sans',sans-serif;margin-bottom:4px;text-align:center;">~5 km</div>
+              <div style="width:16px;height:16px;border-radius:50%;background:#1565C0;border:2px solid var(--white);outline:2px solid #1565C0;margin:0 auto;"></div>
+            </div>
+
+            <!-- VP4: Taunusstraße Rückweg (~6.5km) -->
+            <div style="position:absolute;left:74%;top:50%;transform:translate(-50%,-50%);">
+              <div style="font-size:10px;font-weight:700;color:var(--orange);font-family:'DM Sans',sans-serif;margin-bottom:4px;text-align:center;">~6,5 km</div>
+              <div style="width:16px;height:16px;border-radius:50%;background:var(--orange);border:2px solid var(--white);outline:2px solid var(--orange);margin:0 auto;"></div>
+            </div>
+
+            <!-- ZIEL -->
+            <div style="position:absolute;right:0;top:50%;transform:translate(4px,-50%);">
+              <div style="width:20px;height:20px;border-radius:50%;background:var(--dark);border:3px solid var(--white);outline:2px solid var(--dark);display:flex;align-items:center;justify-content:center;">
+                <div style="width:6px;height:6px;border-radius:50%;background:var(--white);"></div>
+              </div>
+            </div>
+
+            <!-- Richtungspfeile -->
+            <div style="position:absolute;left:10%;top:calc(50% - 16px);font-size:13px;color:var(--mid);opacity:0.5;">→</div>
+            <div style="position:absolute;left:29%;top:calc(50% - 16px);font-size:13px;color:var(--mid);opacity:0.5;">→</div>
+            <div style="position:absolute;left:47%;top:calc(50% - 16px);font-size:13px;color:var(--mid);opacity:0.5;">←</div>
+            <div style="position:absolute;left:65%;top:calc(50% - 16px);font-size:13px;color:var(--mid);opacity:0.5;">←</div>
+            <div style="position:absolute;left:87%;top:calc(50% - 16px);font-size:13px;color:var(--mid);opacity:0.5;">←</div>
+          </div>
+
+          <!-- Labels -->
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+
+            <div style="text-align:center;width:68px;">
+              <div style="font-family:'DM Sans',sans-serif;font-size:11px;font-weight:800;text-transform:uppercase;color:var(--dark);">Start</div>
+              <div style="font-size:10px;color:#888;margin-top:1px;">Kranzplatz</div>
+            </div>
+
+            <div style="text-align:center;width:80px;">
+              <div style="font-family:'DM Sans',sans-serif;font-size:11px;font-weight:800;text-transform:uppercase;color:#1565C0;">Nerotal</div>
+              <div style="font-size:10px;color:#888;margin-top:1px;">nur Wasser</div>
+              <div style="display:inline-block;background:#1565C0;color:var(--white);font-size:9px;font-weight:700;padding:2px 6px;margin-top:3px;font-family:'DM Sans',sans-serif;">⛽ VP 1</div>
+            </div>
+
+            <div style="text-align:center;width:88px;">
+              <div style="font-family:'DM Sans',sans-serif;font-size:11px;font-weight:800;text-transform:uppercase;color:var(--orange);">Taunusstr.</div>
+              <div style="font-size:10px;color:#888;margin-top:1px;">Hinweg · links</div>
+              <div style="display:inline-block;background:var(--orange);color:var(--white);font-size:9px;font-weight:700;padding:2px 6px;margin-top:3px;font-family:'DM Sans',sans-serif;">⛽ VP 2</div>
+            </div>
+
+            <div style="text-align:center;width:88px;">
+              <div style="font-family:'DM Sans',sans-serif;font-size:11px;font-weight:800;text-transform:uppercase;color:#1565C0;">Fichtestr.</div>
+              <div style="font-size:10px;color:#888;margin-top:1px;">Ecke Parkstr.</div>
+              <div style="display:inline-block;background:#1565C0;color:var(--white);font-size:9px;font-weight:700;padding:2px 6px;margin-top:3px;font-family:'DM Sans',sans-serif;">⛽ VP 3</div>
+            </div>
+
+            <div style="text-align:center;width:88px;">
+              <div style="font-family:'DM Sans',sans-serif;font-size:11px;font-weight:800;text-transform:uppercase;color:var(--orange);">Taunusstr.</div>
+              <div style="font-size:10px;color:#888;margin-top:1px;">Rückweg · rechts</div>
+              <div style="display:inline-block;background:var(--orange);color:var(--white);font-size:9px;font-weight:700;padding:2px 6px;margin-top:3px;font-family:'DM Sans',sans-serif;">⛽ VP 4</div>
+            </div>
+
+            <div style="text-align:center;width:68px;">
+              <div style="font-family:'DM Sans',sans-serif;font-size:11px;font-weight:800;text-transform:uppercase;color:var(--dark);">Ziel</div>
+              <div style="font-size:10px;color:#888;margin-top:1px;">Kranzplatz</div>
+              <div style="display:inline-block;background:var(--dark);color:var(--white);font-size:9px;font-weight:700;padding:2px 6px;margin-top:3px;font-family:'DM Sans',sans-serif;">🏁 ZIEL</div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- VP-Angebot -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:3px;margin-top:20px;margin-bottom:4px;">
+        <div style="background:var(--light);padding:18px 20px;border-top:3px solid var(--orange);">
+          <div style="font-family:'DM Sans',sans-serif;font-size:12px;font-weight:800;text-transform:uppercase;color:var(--orange);margin-bottom:10px;">Taunusstraße <span style="font-weight:400;color:#888;">(VP 2 &amp; VP 4)</span></div>
+          <ul style="list-style:none;padding:0;font-size:13px;color:var(--mid);">
+            <li style="padding:2px 0;">→ Wasser</li>
+            <li style="padding:2px 0;">→ Schorle</li>
+            <li style="padding:2px 0;">→ Coke <span style="color:#aaa;font-size:11px;">(ab Runde 3 / ca. km 21)</span></li>
+            <li style="padding:2px 0;">→ Bananen, Äpfel, Cracker, Riegel</li>
+          </ul>
+          <div style="margin-top:10px;padding-top:10px;border-top:1px solid var(--border);font-size:12px;color:var(--orange);font-weight:600;">📦 Eigenverpflegung deponierbar</div>
+        </div>
+        <div style="background:var(--light);padding:18px 20px;border-top:3px solid #1565C0;">
+          <div style="font-family:'DM Sans',sans-serif;font-size:12px;font-weight:800;text-transform:uppercase;color:#1565C0;margin-bottom:10px;">Nerotal (VP 1) &amp; Fichtestraße / Ecke Parkstraße (VP 3)</span></div>
+          <ul style="list-style:none;padding:0;font-size:13px;color:var(--mid);">
+            <li style="padding:2px 0;">→ Wasser</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Legende -->
+      <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:16px;font-size:12px;color:var(--mid);align-items:center;">
+        <div style="display:flex;align-items:center;gap:6px;">
+          <div style="width:12px;height:12px;border-radius:50%;background:var(--orange);"></div>
+          <span>Taunusstraße <em>(×2 pro Runde)</em></span>
+        </div>
+        <div style="display:flex;align-items:center;gap:6px;">
+          <div style="width:12px;height:12px;border-radius:50%;background:#1565C0;"></div>
+          <span>Nerotal &amp; Fichtestraße – nur Wasser</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:6px;">
+          <div style="width:12px;height:12px;border-radius:50%;background:var(--dark);"></div>
+          <span>Kranzplatz – Start &amp; Ziel</span>
+        </div>
+      </div>
+
+      <p style="margin-top:16px;font-size:13px;color:#888;">Marathon = 6 Runden · Halbmarathon = 3 Runden · 10 km = 1 große Runde + 1 Innenrunde · alle ca. 1,5 km eine VP · km-Angaben sind Näherungswerte</p>
+
+    </div>
+  </section>
+
+  <!-- NOTFALL & KONTAKT -->
+  <section class="section" id="notfall">
+    <div class="container">
+      <div class="section-eyebrow">Sicherheit am Renntag</div>
+      <h2>Notfall &amp; Kontakt</h2>
+      <div class="notfall-box">
+        <span class="nb-icon">🚨</span>
+        <div>
+          <h3>Medizinischer Notfall</h3>
+          <p>Sanitäter sind auf der Strecke und am Eventgelände präsent.</p>
+          <span class="tel">Notruf: 112</span>
+        </div>
+      </div>
+      <div class="info-grid">
+        <div class="info-card">
+          <span class="ic-icon">📞</span>
+          <div class="ic-title">Orga-Kontakt</div>
+          <p><a href="mailto:info@wiesbaden-marathon.de" style="color:var(--orange);">info@wiesbaden-marathon.de</a></p>
+        </div>
+        <div class="info-card">
+          <span class="ic-icon">🔍</span>
+          <div class="ic-title">Lost &amp; Found</div>
+          <p>Anlaufstelle: <strong>Startnummernausgabe</strong> am Kranzplatz.</p>
+          <p style="margin-top:6px;">Nach dem Event: <a href="mailto:info@wiesbaden-marathon.de" style="color:var(--orange);">info@wiesbaden-marathon.de</a></p>
+        </div>
+        <div class="info-card">
+          <span class="ic-icon">♿</span>
+          <div class="ic-title">Barrierefreiheit</div>
+          <p>Bei besonderen Bedürfnissen vorab melden: <a href="mailto:info@wiesbaden-marathon.de" style="color:var(--orange);">info@wiesbaden-marathon.de</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DOWNLOADS -->
+  <section class="section" id="downloads">
+    <div class="container">
+      <div class="section-eyebrow">Alle Infos</div>
+      <h2>Downloads &amp; Links</h2>
+      <div class="dl-grid">
+        <a href="https://web.bikemap.net/r/18559517" target="_blank" class="dl-card">
+          <span class="dc-icon">🗺️</span>
+          <div class="dc-title">Strecke 3 km</div>
+          <div class="dc-sub">Bikemap ansehen</div>
+        </a>
+        <a href="https://web.bikemap.net/r/18559482" target="_blank" class="dl-card">
+          <span class="dc-icon">🗺️</span>
+          <div class="dc-title">Strecke 5 km</div>
+          <div class="dc-sub">Bikemap ansehen</div>
+        </a>
+        <a href="https://web.bikemap.net/r/18559035" target="_blank" class="dl-card">
+          <span class="dc-icon">🗺️</span>
+          <div class="dc-title">Strecke 10 km</div>
+          <div class="dc-sub">Bikemap ansehen</div>
+        </a>
+        <a href="https://web.bikemap.net/r/18444340" target="_blank" class="dl-card">
+          <span class="dc-icon">🗺️</span>
+          <div class="dc-title">Strecke HM / Marathon</div>
+          <div class="dc-sub">Bikemap ansehen</div>
+        </a>
+        <a href="https://sporthilfe-wiesbaden.de/files/WICM26_3K.gpx" class="dl-card">
+          <span class="dc-icon">📍</span>
+          <div class="dc-title">GPX 3 km</div>
+          <div class="dc-sub">Download</div>
+        </a>
+        <a href="https://sporthilfe-wiesbaden.de/files/WICM26_5K.gpx" class="dl-card">
+          <span class="dc-icon">📍</span>
+          <div class="dc-title">GPX 5 km</div>
+          <div class="dc-sub">Download</div>
+        </a>
+        <a href="https://sporthilfe-wiesbaden.de/files/WICM26_10K.gpx" class="dl-card">
+          <span class="dc-icon">📍</span>
+          <div class="dc-title">GPX 10 km</div>
+          <div class="dc-sub">Download</div>
+        </a>
+        <a href="https://sporthilfe-wiesbaden.de/files/WICM26_M_HM.gpx" class="dl-card">
+          <span class="dc-icon">📍</span>
+          <div class="dc-title">GPX HM / Marathon</div>
+          <div class="dc-sub">Download</div>
+        </a>
+        
+        
+        
+        
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ANWOHNER -->
+  <section class="section" id="anwohner">
+    <div class="container">
+      <div class="section-eyebrow">Information für Anwohner</div>
+      <h2>Straßensperrungen & Anwohner-Info</h2>
+
+      <div style="background:var(--light);border-left:4px solid var(--orange);padding:18px 24px;margin-bottom:24px;display:flex;gap:16px;align-items:flex-start;">
+        <span style="font-size:24px;flex-shrink:0;">📄</span>
+        <div>
+          <div style="font-family:'DM Sans',sans-serif;font-size:14px;font-weight:700;color:var(--dark);margin-bottom:4px;">Vollständige Anwohner-Information als PDF</div>
+          <p style="font-size:13px;color:var(--mid);margin-bottom:10px;">Alle Details zu Sperrungen, Halteverboten, Umfahrungen und Zeitfenstern finden Sie in der offiziellen Anwohner-Information.</p>
+          <a href="https://sporthilfe-wiesbaden.de/wp-content/uploads/2026/06/anwohnerinformation_wiesbaden_city_marathon_2026.pdf" target="_blank" class="btn-small btn-primary">Anwohner-Info herunterladen →</a>
+          <a href="https://sporthilfe-wiesbaden.de/wp-content/uploads/2026/06/anwohnerinformation_wiesbaden_city_marathon_2026_laufstrecke.pdf" target="_blank" class="btn-small btn-outline">Karte Laufstrecke →</a>
+          <a href="https://sporthilfe-wiesbaden.de/wp-content/uploads/2026/06/anwohnerinformation_wiesbaden_city_marathon_2026_umfahrungsmoeglichkeiten.pdf" target="_blank" class="btn-small btn-outline">Karte Umfahrungen →</a>
+        </div>
+      </div>
+
+      <div style="font-family:'DM Sans',sans-serif;font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;color:var(--dark);margin-bottom:16px;">Wichtigste Zeiten & Sperrungen im Überblick</div>
+
+      <!-- Freitag -->
+      <div style="background:var(--light);padding:12px 20px;margin-bottom:4px;display:flex;align-items:center;gap:10px;">
+        <span style="font-family:'DM Sans',sans-serif;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;color:var(--mid);">📅 Freitag, 19. Juni 2026</span>
+        <span style="font-size:11px;color:#aaa;">Schulklassenlauf (Kurpark)</span>
+      </div>
+      <div class="timeline" style="margin-bottom:20px;">
+        <div class="tl-item">
+          <div class="tl-title">09:00 – 13:00 Uhr</div>
+          <div class="tl-detail">Lauf im Kurpark. Kurzzeitige Verzögerungen 10:30–12:45 Uhr an der Josef-von-Lauff-Straße und Fichtestraße – Verkehr wird vor Ort geschleust.</div>
+        </div>
+      </div>
+
+      <!-- Samstag -->
+      <div style="background:var(--orange);padding:12px 20px;margin-bottom:4px;display:flex;align-items:center;gap:10px;">
+        <span style="font-family:'DM Sans',sans-serif;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;color:var(--white);">📅 Samstag, 20. Juni 2026</span>
+        <span style="font-size:11px;color:rgba(255,255,255,0.75);">Hauptlauf – Start ab 18:45 Uhr</span>
+      </div>
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-title">Ab 11:00 Uhr</div>
+          <div class="tl-detail">Halteverbote auf der gesamten Laufstrecke treten in Kraft. <strong>Achtung: Parkende Fahrzeuge werden ab 11:00 Uhr abgeschleppt!</strong></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-title">Ab 14:00 Uhr</div>
+          <div class="tl-detail">Vollsperrung im Bereich Georg-August-Zinn-Straße / Kranzplatz (zwischen Spiegelgasse und Taunusstraße).</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-title">Ab 18:15 Uhr</div>
+          <div class="tl-detail">Vollsperrung der gesamten Laufstrecke für den Fahrzeugverkehr. Ein Befahren der betroffenen Straßen ist danach nicht mehr möglich.</div>
+          <span class="tl-warn">⚠ Keine Durchfahrt ab 18:15 Uhr</span>
+        </div>
+        <div class="tl-item">
+          <div class="tl-title">Bis spätestens 23:59 Uhr</div>
+          <div class="tl-detail">Die Sperrungen werden nach dem letzten Läufer sukzessive wieder aufgehoben.</div>
+        </div>
+      </div>
+
+      <div style="font-family:'DM Sans',sans-serif;font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;color:var(--dark);margin-bottom:12px;">Betroffene Straßen (Laufstrecke Samstag)</div>
+      <div style="background:var(--light);padding:16px 20px;font-size:13px;color:var(--mid);line-height:1.8;margin-bottom:24px;">
+        Kranzplatz (Start/Ziel) → Georg-August-Zinn-Straße → Taunusstraße → Nerotal (mit Wendepunkt) → Sonnenberger Straße → An der Dietenmühle → Parkstraße → Kurhaus → Christian-Zais-Straße → Wilhelmstraße
+      </div>
+
+      <div class="info-grid">
+        <div class="info-card">
+          <span class="ic-icon">🔄</span>
+          <div class="ic-title">Aufhebung Einbahnstraßen</div>
+          <p>Nördlich der Sonnenberger Straße (Kureck – An der Dietenmühle) sowie Parkstraße (Paulinenstraße – Fichtestraße): Zweirichtungsverkehr wird eingerichtet, damit Wohngebiete erreichbar bleiben.</p>
+        </div>
+        <div class="info-card">
+          <span class="ic-icon">🍇</span>
+          <div class="ic-title">Weinbergstraße / Nerotal</div>
+          <p>Ab Kleiner Weinbergstraße als Einbahnstraße in westlicher Richtung. Ausfahrt und Zufahrt zum WTHC bleiben über den Parkplatz Nerotal jederzeit möglich.</p>
+        </div>
+        <div class="info-card">
+          <span class="ic-icon">🚗</span>
+          <div class="ic-title">Großräumige Umfahrung</div>
+          <ul>
+            <li>Vom HBF: Rheinstraße → Schwalbacher Straße → Platter Straße</li>
+            <li>Richtung Sonnenberg: Bierstadter Straße → Rheinlandstraße</li>
+          </ul>
+        </div>
+        <div class="info-card">
+          <span class="ic-icon">📞</span>
+          <div class="ic-title">Fragen & Kontakt</div>
+          <p>Bei Fragen zur Veranstaltung: <a href="mailto:info@wiesbaden-marathon.de" style="color:var(--orange);">info@wiesbaden-marathon.de</a></p>
+          <p style="margin-top:6px;">Wir laden Sie herzlich ein, die Läuferinnen und Läufer an der Strecke anzufeuern! 🎉</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" id="faq">
+    <div class="container">
+      <div class="section-eyebrow">Häufige Fragen</div>
+      <h2>FAQ</h2>
+
+      <div style="display:flex;flex-direction:column;gap:2px;">
+
+        <details style="background:var(--light);padding:0;border-top:3px solid var(--border);">
+          <summary style="padding:16px 20px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:700;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+            Wo genau ist Start und Ziel? <span style="color:var(--orange);font-size:18px;font-weight:400;">+</span>
+          </summary>
+          <div style="padding:0 20px 16px;font-size:13px;color:var(--mid);line-height:1.65;">
+            Start und Ziel sind 2026 am <strong>Kranzplatz, 65183 Wiesbaden</strong> – nicht am Schlossplatz. Die Änderung erfolgte aufgrund eines Fußball-WM-Spiels und einer Baustelle am Schlossplatz.
+          </div>
+        </details>
+
+        <details style="background:var(--light);padding:0;border-top:3px solid var(--border);">
+          <summary style="padding:16px 20px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:700;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+            Ich habe meine Bestätigungsmail nicht erhalten – was tun? <span style="color:var(--orange);font-size:18px;font-weight:400;">+</span>
+          </summary>
+          <div style="padding:0 20px 16px;font-size:13px;color:var(--mid);line-height:1.65;">
+            Bitte zuerst den <strong>Spam-/Junk-Ordner</strong> prüfen. In der Rennwoche (ca. 15./16. Juni) wird die Bestätigungsmail mit QR-Code nochmals an alle verschickt. Falls sie danach immer noch fehlt: <a href="mailto:info@wiesbaden-marathon.de" style="color:var(--orange);">info@wiesbaden-marathon.de</a>
+          </div>
+        </details>
+
+        <details style="background:var(--light);padding:0;border-top:3px solid var(--border);">
+          <summary style="padding:16px 20px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:700;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+            Meine Startnummer ist noch nicht angekommen – was jetzt? <span style="color:var(--orange);font-size:18px;font-weight:400;">+</span>
+          </summary>
+          <div style="padding:0 20px 16px;font-size:13px;color:var(--mid);line-height:1.65;">
+            Der Versand startet ab 8. Juni. Bitte erst melden, wenn bis <strong>Dienstag, 17. Juni</strong> nichts angekommen ist. Danach gibt es Ersatz bei der Startnummernausgabe vor Ort (Ausweis mitbringen).
+          </div>
+        </details>
+
+        <details style="background:var(--light);padding:0;border-top:3px solid var(--border);">
+          <summary style="padding:16px 20px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:700;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+            Kann ich die Distanz noch wechseln? <span style="color:var(--orange);font-size:18px;font-weight:400;">+</span>
+          </summary>
+          <div style="padding:0 20px 16px;font-size:13px;color:var(--mid);line-height:1.65;">
+            Nur noch direkt bei der Startnummernausgabe vor Ort. Längere Distanz: Differenzbetrag in bar. Kürzere Distanz: keine Rückzahlung.
+          </div>
+        </details>
+
+        <details style="background:var(--light);padding:0;border-top:3px solid var(--border);">
+          <summary style="padding:16px 20px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:700;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+            Kann ich mich noch abmelden? Gibt es eine Rückerstattung? <span style="color:var(--orange);font-size:18px;font-weight:400;">+</span>
+          </summary>
+          <div style="padding:0 20px 16px;font-size:13px;color:var(--mid);line-height:1.65;">
+            Eine Abmeldung von der Startliste ist weiterhin per E-Mail möglich. Da das Event in der finalen Durchführungsphase ist, können Startgebühren leider nicht mehr erstattet werden. Wir danken dir für dein Verständnis. Bei Fragen: <a href="mailto:info@wiesbaden-marathon.de" style="color:var(--orange);">info@wiesbaden-marathon.de</a>.
+          </div>
+        </details>
+
+        <details style="background:var(--light);padding:0;border-top:3px solid var(--border);">
+          <summary style="padding:16px 20px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:700;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+            Kann jemand anderes meine Startnummer abholen? <span style="color:var(--orange);font-size:18px;font-weight:400;">+</span>
+          </summary>
+          <div style="padding:0 20px 16px;font-size:13px;color:var(--mid);line-height:1.65;">
+            Ja, mit einer <strong>Vollmacht</strong> und einer Ausweiskopie der angemeldeten Person. Die Vollmacht gibt es hier: <a href="https://sporthilfe-wiesbaden.de/files/Vollmacht_Authorisation_2026.pdf" target="_blank" style="color:var(--orange);">Vollmacht PDF →</a>
+          </div>
+        </details>
+
+        <details style="background:var(--light);padding:0;border-top:3px solid var(--border);">
+          <summary style="padding:16px 20px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:700;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+            Darf ein Minderjähriger teilnehmen? <span style="color:var(--orange);font-size:18px;font-weight:400;">+</span>
+          </summary>
+          <div style="padding:0 20px 16px;font-size:13px;color:var(--mid);line-height:1.65;">
+            Ja. Minderjährige Teilnehmende benötigen eine schriftliche Einverständniserklärung der Eltern. Ein formloses Schreiben mit Name, Geburtsdatum, Distanz und Unterschrift reicht aus. Vorlage: <a href="https://sporthilfe-wiesbaden.de/files/Einverstaendnis_Minderjaehrige_2026.pdf" target="_blank" style="color:var(--orange);">Einverständniserklärung PDF →</a>
+          </div>
+        </details>
+
+        <details style="background:var(--light);padding:0;border-top:3px solid var(--border);">
+          <summary style="padding:16px 20px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:700;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+            Habe ich ein RMV-Ticket? <span style="color:var(--orange);font-size:18px;font-weight:400;">+</span>
+          </summary>
+          <div style="padding:0 20px 16px;font-size:13px;color:var(--mid);line-height:1.65;">
+            Das RMV-Kombi-Ticket gilt nur für Teilnehmende, die es bei der Anmeldung gebucht haben. Es ist <strong>kein separates Ticket</strong> – das RMV-Kombi-Logo ist im unteren Bereich deiner Anmeldebestätigung integriert und gilt zusammen mit dieser als Fahrausweis. Am Veranstaltungstag gültig für An- und Abreise im gesamten RMV-Verbundraum. Nachträglich nicht mehr buchbar.
+          </div>
+        </details>
+
+        <details style="background:var(--light);padding:0;border-top:3px solid var(--border);">
+          <summary style="padding:16px 20px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:700;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+            Wo parke ich am besten? <span style="color:var(--orange);font-size:18px;font-weight:400;">+</span>
+          </summary>
+          <div style="padding:0 20px 16px;font-size:13px;color:var(--mid);line-height:1.65;">
+            Parkhaus Theater (~10 Min Fußweg), Parkhaus Bowling Green (~5 Min) oder Parkhaus Luisenplatz (~5 Min, keine Beeinträchtigung 2026). Ab 18:15 Uhr ist die Laufstrecke gesperrt – bitte <strong>mindestens 90 Minuten vor der Startzeit</strong> anreisen. ÖPNV wird empfohlen: Bus 1/8 → Haltestelle Kochbrunnenplatz.
+          </div>
+        </details>
+
+        <details style="background:var(--light);padding:0;border-top:3px solid var(--border);">
+          <summary style="padding:16px 20px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:700;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+            Was passiert, wenn ich meinen Chip verliere? <span style="color:var(--orange);font-size:18px;font-weight:400;">+</span>
+          </summary>
+          <div style="padding:0 20px 16px;font-size:13px;color:var(--mid);line-height:1.65;">
+            Der Chip ist in der Startnummer integriert – bitte nicht knicken! Bei Verlust oder Beschädigung sofort die Startnummernausgabe vor Ort aufsuchen.
+          </div>
+        </details>
+
+        <details style="background:var(--light);padding:0;border-top:3px solid var(--border);">
+          <summary style="padding:16px 20px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:700;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+            Welche Altersklassen gelten? <span style="color:var(--orange);font-size:18px;font-weight:400;">+</span>
+          </summary>
+          <div style="padding:0 20px 16px;font-size:13px;color:var(--mid);line-height:1.65;">
+            3 km: Jahrgänge 2015–2019 (6–12 Jahre). 5 km: ab 12 Jahre (Jg. 2014). 10 km &amp; Halbmarathon: ab 16 Jahre (Jg. 2010) – mit Einverständnis eines Erziehungsberechtigten.
+          </div>
+        </details>
+        <details style="background:var(--light);padding:0;border-top:3px solid var(--border);">
+          <summary style="padding:16px 20px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:700;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+            Erhalten alle Finisher eine Medaille? <span style="color:var(--orange);font-size:18px;font-weight:400;">+</span>
+          </summary>
+          <div style="padding:0 20px 16px;font-size:13px;color:var(--mid);line-height:1.65;">
+            Ja – alle Finisher aller Distanzen erhalten die offizielle Finisher-Medaille. Gravur mit Name &amp; Zeit am Startnummerngezelt nach dem Rennen für 12 € bar.
+          </div>
+        </details>
+        <details style="background:var(--light);padding:0;border-top:3px solid var(--border);">
+          <summary style="padding:16px 20px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:700;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+            Gibt es ein Finisher-Shirt? <span style="color:var(--orange);font-size:18px;font-weight:400;">+</span>
+          </summary>
+          <div style="padding:0 20px 16px;font-size:13px;color:var(--mid);line-height:1.65;">
+            Marathon-Läufer erhalten das Shirt im Startgeld. Alle anderen konnten es bis 01.06. für 12 € bestellen. Abholung am Samstag ab 10:00 Uhr bis Zielschluss (00:00 Uhr) – auch noch nach dem Lauf. Einfach Startnummer vorzeigen. Restkontingent zum Nachkaufen vor Ort erhältlich.
+          </div>
+        </details>
+        <details style="background:var(--light);padding:0;border-top:3px solid var(--border);">
+          <summary style="padding:16px 20px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:700;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+            Gibt es Pacemaker? <span style="color:var(--orange);font-size:18px;font-weight:400;">+</span>
+          </summary>
+          <div style="padding:0 20px 16px;font-size:13px;color:var(--mid);line-height:1.65;">
+            Nur beim Marathon: 3:45 Std. und 4:15 Std. – erkennbar an großen Ballons.
+          </div>
+        </details>
+        <details style="background:var(--light);padding:0;border-top:3px solid var(--border);">
+          <summary style="padding:16px 20px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:700;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+            Was gilt für Schüler und Studenten beim Startgeld? <span style="color:var(--orange);font-size:18px;font-weight:400;">+</span>
+          </summary>
+          <div style="padding:0 20px 16px;font-size:13px;color:var(--mid);line-height:1.65;">
+            Schüler und Studenten zahlen 70% des regulären Startgeldes. Gültigen Ausweis bei der Startnummernausgabe vorlegen.
+          </div>
+        </details>
+        <details style="background:var(--light);padding:0;border-top:3px solid var(--border);">
+          <summary style="padding:16px 20px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:700;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+            Was ist der Firmenlauf / Company Champion? <span style="color:var(--orange);font-size:18px;font-weight:400;">+</span>
+          </summary>
+          <div style="padding:0 20px 16px;font-size:13px;color:var(--mid);line-height:1.65;">
+            Firmen treten am 20. Juni 2026 um 19:15 Uhr über 5 km in automatisch gebildeten 3er-Teams an. Gewertet werden addierte Zeiten. Wichtig: bei der Anmeldung unter Verein/Firma exakt denselben Namen eintragen.
+          </div>
+        </details>
+        <details style="background:var(--light);padding:0;border-top:3px solid var(--border);">
+          <summary style="padding:16px 20px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:700;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+            Gibt es Zeitlimits? <span style="color:var(--orange);font-size:18px;font-weight:400;">+</span>
+          </summary>
+          <div style="padding:0 20px 16px;font-size:13px;color:var(--mid);line-height:1.65;">
+            Keine Zeitlimits. Offizieller Zielschluss: 00:00 Uhr (Mitternacht).
+          </div>
+        </details>
+        <details style="background:var(--light);padding:0;border-top:3px solid var(--border);">
+          <summary style="padding:16px 20px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:700;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+            Wann sind Ergebnisse und Urkunden verfügbar? <span style="color:var(--orange);font-size:18px;font-weight:400;">+</span>
+          </summary>
+          <div style="padding:0 20px 16px;font-size:13px;color:var(--mid);line-height:1.65;">
+            Ergebnisse sind nach Zielschluss online abrufbar. Urkunden können direkt heruntergeladen werden.
+          </div>
+        </details>
+        <details style="background:var(--light);padding:0;border-top:3px solid var(--border);">
+          <summary style="padding:16px 20px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:700;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+            Wann findet die Siegerehrung statt? <span style="color:var(--orange);font-size:18px;font-weight:400;">+</span>
+          </summary>
+          <div style="padding:0 20px 16px;font-size:13px;color:var(--mid);line-height:1.65;">
+            Top 3 je Distanz (alle Distanzen inkl. 3 km). Siegerehrungen: 20:00 / 21:00 / 23:00 Uhr.
+          </div>
+        </details>
+        <details style="background:var(--light);padding:0;border-top:3px solid var(--border);">
+          <summary style="padding:16px 20px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:700;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+            Sind Nordic Walker willkommen? <span style="color:var(--orange);font-size:18px;font-weight:400;">+</span>
+          </summary>
+          <div style="padding:0 20px 16px;font-size:13px;color:var(--mid);line-height:1.65;">
+            Ja – bitte beim Start in der hintersten Reihe einordnen.
+          </div>
+        </details>
+        <details style="background:var(--light);padding:0;border-top:3px solid var(--border);">
+          <summary style="padding:16px 20px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:700;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;">
+            Wer übernimmt den Sanitätsdienst? <span style="color:var(--orange);font-size:18px;font-weight:400;">+</span>
+          </summary>
+          <div style="padding:0 20px 16px;font-size:13px;color:var(--mid);line-height:1.65;">
+            Das DRK Wiesbaden ist am Start/Ziel und auf der gesamten Strecke präsent. Notruf: 112.
+          </div>
+        </details>
+
+      </div>
+
+      <style>
+        details summary::-webkit-details-marker { display: none; }
+        details[open] summary span { transform: rotate(45deg); display:inline-block; }
+        details[open] { border-color: var(--orange) !important; }
+        details[open] summary { color: var(--orange); }
+      </style>
+
+    </div>
+  </section>
+
+</main>
+
+<div style="max-width:920px;margin:0 auto;padding:28px 40px 44px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;">
+  <div style="display:flex;align-items:center;gap:40px;flex-wrap:wrap;">
+    <div style="display:flex;align-items:center;gap:14px;">
+      <span style="font-family:'DM Sans',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#bbb;">Presented by</span>
+      <a href="https://www.lucky-bike.de" target="_blank">
+        <img src="https://www.lucky-bike.de/out/antares/img/assets/logo.svg" alt="Lucky Bike" style="height:40px;max-width:140px;width:auto;" onerror="this.parentElement.innerHTML='<span style=\'font-family:DM Sans,sans-serif;font-weight:800;font-size:22px;color:#333;\'>Lucky Bike</span>'">
+      </a>
+    </div>
+    <div style="width:1px;height:32px;background:var(--border);"></div>
+    <div style="display:flex;align-items:center;gap:14px;">
+      <a href="https://www.backhaus-schroeer.de" target="_blank">
+        <img src="https://sporthilfe-wiesbaden.de/wp-content/uploads/2023/03/schroeers_logo_mit_storch.png" alt="Schröers" style="height:40px;max-width:140px;width:auto;object-fit:contain;" onerror="this.style.display='none'">
+      </a>
+    </div>
+    <div style="width:1px;height:32px;background:var(--border);"></div>
+    <div style="display:flex;align-items:center;gap:14px;">
+      <span style="font-family:'DM Sans',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#bbb;">Sponsor</span>
+      <a href="https://obermayr.com" target="_blank">
+        <img src="https://obermayr.com/wp-content/uploads/2024/12/Logos_Business_School.png" alt="Obermayr Business School" style="height:52px;max-width:160px;width:auto;object-fit:contain;" onerror="this.style.display='none'">
+      </a>
+    </div>
+  </div>
+  <div style="font-family:'DM Sans',sans-serif;font-size:12px;color:#bbb;">Stand: 05.06.2026</div>
+</div>
+
+<script>
+  function tick() {
+    const target = new Date('2026-06-20T18:45:00');
+    const diff = target - new Date();
+    const days = diff > 0 ? Math.floor(diff / 86400000) : '0';
+    document.getElementById('cd-days').textContent = days;
+    const el = document.getElementById('intro-days');
+    if (el) el.textContent = days;
+  }
+  tick(); setInterval(tick, 60000);
+
+  const sections = document.querySelectorAll('.section[id]');
+  const links = document.querySelectorAll('.sticky-nav a');
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        links.forEach(a => a.classList.remove('active'));
+        const a = document.querySelector(`.sticky-nav a[href="#${e.target.id}"]`);
+        if (a) a.classList.add('active');
+      }
+    });
+  }, { threshold: 0.25 });
+  sections.forEach(s => io.observe(s));
+</script>
+
+</body>
+</html>
