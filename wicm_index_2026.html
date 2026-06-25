@@ -3,449 +3,509 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>City Marathon Wiesbaden 2026 – Teilnehmerinfos</title>
+<title>City Marathon Wiesbaden 2026 – 20. Juni 2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Barlow+Condensed:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
+:root {
+  --orange: #F07800;
+  --orange2: #FF8C00;
+  --dark: #0d0d0d;
+  --dark2: #161616;
+  --dark3: #1f1f1f;
+  --mid: #6b6b6b;
+  --light: #f5f5f5;
+  --white: #fff;
+  --max: 1140px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', sans-serif; background: var(--dark); color: var(--white); overflow-x: hidden; }
+a { text-decoration: none; color: inherit; }
 
-  :root {
-    --orange: #F07800;
-    --orange-dark: #C96200;
-    --dark: #0f0f0f;
-    --dark2: #1a1a1a;
-    --mid: #555;
-    --light: #f8f8f8;
-    --white: #fff;
-    --border: #e8e8e8;
-    --max: 1100px;
-  }
+/* ── NAV ── */
+.nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 0 40px; height: 64px; display: flex; align-items: center; justify-content: space-between; transition: background 0.3s; }
+.nav.scrolled { background: rgba(13,13,13,0.97); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(255,255,255,0.06); }
+.nav-logo img { height: 36px; filter: brightness(0) invert(1); }
+.nav-links { display: flex; gap: 0; }
+.nav-links a { color: rgba(255,255,255,0.65); font-size: 13px; font-weight: 500; padding: 22px 16px; border-bottom: 2px solid transparent; transition: all 0.15s; }
+.nav-links a:hover { color: var(--white); border-color: var(--orange); }
+.nav-right { display: flex; align-items: center; gap: 16px; }
+.nav-cta { background: var(--orange); color: var(--white); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; padding: 10px 20px; transition: background 0.15s; }
+.nav-cta:hover { background: var(--orange2); color: var(--white); }
+.nav-lang { display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; }
+.nav-lang a { color: rgba(255,255,255,0.4); }
+.nav-lang a.on { color: var(--orange); }
+.nav-lang span { color: rgba(255,255,255,0.15); }
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+.hamburger span { display: block; width: 22px; height: 2px; background: var(--white); }
+.mob-menu { display: none; position: fixed; inset: 64px 0 0; background: var(--dark); z-index: 999; padding: 24px 24px; overflow-y: auto; }
+.mob-menu.open { display: block; }
+.mob-menu a { display: block; color: rgba(255,255,255,0.8); font-size: 16px; font-weight: 500; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.07); }
+@media (max-width: 820px) { .nav-links { display: none; } .hamburger { display: flex; } .nav { padding: 0 20px; } .nav-cta { display: none; } }
 
+/* ── HERO ── */
+.hero { position: relative; height: 100vh; min-height: 620px; display: flex; align-items: flex-end; overflow: hidden; }
+.hero-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 30%; }
+.hero-grad { position: absolute; inset: 0; background: linear-gradient(to top, rgba(13,13,13,1) 0%, rgba(13,13,13,0.55) 45%, rgba(13,13,13,0.15) 100%); }
+.hero-inner { position: relative; z-index: 2; max-width: var(--max); margin: 0 auto; padding: 0 40px 72px; width: 100%; }
+.hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(240,120,0,0.15); border: 1px solid rgba(240,120,0,0.4); color: var(--orange); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em; padding: 6px 14px; margin-bottom: 20px; }
+.hero-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--orange); animation: pulse 1.5s ease-in-out infinite; }
+@keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
+.hero h1 { font-family: 'Anton', sans-serif; font-size: clamp(44px, 8.5vw, 100px); line-height: 0.95; text-transform: uppercase; margin-bottom: 20px; letter-spacing: 0.01em; }
+.hero h1 .accent { color: var(--orange); display: block; }
+.hero-sub { font-size: clamp(14px, 2vw, 17px); color: rgba(255,255,255,0.65); font-weight: 400; margin-bottom: 36px; max-width: 560px; line-height: 1.6; }
+.hero-sub strong { color: var(--white); font-weight: 600; }
+.hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 56px; }
+.btn-hero { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; padding: 16px 32px; transition: all 0.15s; }
+.btn-hero.primary { background: var(--orange); color: var(--white); }
+.btn-hero.primary:hover { background: var(--orange2); }
+.btn-hero.outline { border: 2px solid rgba(255,255,255,0.35); color: var(--white); }
+.btn-hero.outline:hover { border-color: var(--white); }
+.hero-stats { display: flex; gap: 40px; padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.1); flex-wrap: wrap; }
+.hs { }
+.hs-val { font-family: 'Anton', sans-serif; font-size: 32px; color: var(--orange); line-height: 1; }
+.hs-lbl { font-size: 11px; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 0.09em; margin-top: 3px; }
+@media (max-width: 640px) { .hero-inner { padding: 0 20px 56px; } .hero h1 { font-size: 48px; } .hero-stats { gap: 24px; } }
 
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  body { font-family: 'Inter', sans-serif; background: var(--white); color: var(--dark); font-size: 15px; line-height: 1.65; }
-  a { text-decoration: none; color: inherit; }
-  p { line-height: 1.7; }
-  img { max-width: 100%; }
+/* ── COUNTDOWN BAR ── */
+.cd-bar { background: var(--orange); }
+.cd-bar-inner { max-width: var(--max); margin: 0 auto; padding: 14px 40px; display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+.cd-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.75); }
+.cd-units { display: flex; gap: 20px; }
+.cd-unit { display: flex; align-items: baseline; gap: 5px; }
+.cd-n { font-family: 'Anton', sans-serif; font-size: 28px; color: var(--white); line-height: 1; }
+.cd-u { font-size: 11px; color: rgba(255,255,255,0.75); text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; }
+@media (max-width: 640px) { .cd-bar-inner { padding: 12px 20px; } }
 
+/* ── ANNOUNCEMENT ── */
+.announce { background: var(--dark2); border-bottom: 1px solid rgba(255,255,255,0.06); }
+.announce-inner { max-width: var(--max); margin: 0 auto; padding: 20px 40px; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.announce-icon { font-size: 20px; flex-shrink: 0; }
+.announce-text { flex: 1; min-width: 200px; font-size: 14px; color: rgba(255,255,255,0.8); line-height: 1.5; }
+.announce-text strong { color: var(--white); }
+.announce-tag { background: rgba(240,120,0,0.15); border: 1px solid rgba(240,120,0,0.3); color: var(--orange); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; padding: 4px 10px; white-space: nowrap; flex-shrink: 0; }
+@media (max-width: 640px) { .announce-inner { padding: 16px 20px; } }
 
-  /* NAV */
-  .nav-wrap { position: sticky; top: 0; z-index: 200; background: var(--dark); }
-  .nav-inner { max-width: var(--max); margin: 0 auto; padding: 0 40px; display: flex; align-items: center; justify-content: space-between; height: 68px; }
-  .nav-logo img { height: 40px; width: auto; filter: brightness(0) invert(1); transition: opacity 0.2s; }
-  .nav-logo img:hover { opacity: 0.8; }
-  .nav-links { display: flex; align-items: center; gap: 0; }
-  .nav-links a { color: rgba(255,255,255,0.75); font-size: 13px; font-weight: 500; letter-spacing: 0.04em; padding: 24px 16px; display: block; transition: color 0.15s; border-bottom: 3px solid transparent; position: relative; }
-  .nav-links a:hover, .nav-links a.active { color: var(--white); border-color: var(--orange); }
-  .nav-links .has-dropdown { position: relative; }
-  .nav-links .has-dropdown > a::after { content: ' ▾'; font-size: 10px; opacity: 0.6; }
-  .nav-dropdown { display: none; position: absolute; top: 100%; left: 0; background: var(--dark2); min-width: 200px; border-top: 3px solid var(--orange); box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
-  .nav-links .has-dropdown:hover .nav-dropdown { display: block; }
-  .nav-dropdown a { padding: 12px 20px; font-size: 13px; border-bottom: 1px solid rgba(255,255,255,0.05); color: rgba(255,255,255,0.75); }
-  .nav-dropdown a:hover { color: var(--orange); background: rgba(255,255,255,0.03); }
-  .nav-right { display: flex; align-items: center; gap: 16px; }
-  .nav-lang a { color: rgba(255,255,255,0.5); font-size: 12px; font-weight: 600; letter-spacing: 0.08em; padding: 4px 6px; }
-  .nav-lang a.active { color: var(--orange); }
-  .nav-lang span { color: rgba(255,255,255,0.2); font-size: 10px; }
-  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
-  .hamburger span { display: block; width: 24px; height: 2px; background: var(--white); transition: all 0.2s; }
-  .mobile-menu { display: none; position: fixed; inset: 68px 0 0; background: var(--dark); z-index: 199; overflow-y: auto; padding: 20px; }
-  .mobile-menu.open { display: block; }
-  .mobile-menu a { display: block; color: var(--white); font-size: 16px; font-weight: 500; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
-  .mobile-menu a.sub { padding-left: 20px; font-size: 14px; color: rgba(255,255,255,0.6); }
-  @media (max-width: 768px) {
-    .nav-links, .nav-lang { display: none; }
-    .hamburger { display: flex; }
-    .nav-inner { padding: 0 20px; }
-  }
+/* ── SECTIONS ── */
+.section { padding: 96px 0; }
+.section.tight { padding: 72px 0; }
+.container { max-width: var(--max); margin: 0 auto; padding: 0 40px; }
+.sec-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.16em; color: var(--orange); margin-bottom: 10px; }
+.sec-title { font-family: 'Anton', sans-serif; font-size: clamp(28px, 5vw, 52px); text-transform: uppercase; line-height: 1; margin-bottom: 16px; }
+.sec-sub { font-size: 15px; color: rgba(255,255,255,0.55); max-width: 560px; line-height: 1.7; margin-bottom: 48px; }
+@media (max-width: 640px) { .container { padding: 0 20px; } .section { padding: 64px 0; } .sec-sub { margin-bottom: 32px; } }
 
+/* ── DISTANZEN ── */
+.dist-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; }
+.dist-card { background: var(--dark2); padding: 36px 32px; border-top: 3px solid var(--dark3); transition: border-color 0.2s; display: flex; flex-direction: column; gap: 0; position: relative; overflow: hidden; }
+.dist-card::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(240,120,0,0.04) 0%, transparent 60%); opacity: 0; transition: opacity 0.2s; }
+.dist-card:hover { border-color: var(--orange); }
+.dist-card:hover::after { opacity: 1; }
+.dist-badge { display: inline-block; background: var(--orange); color: var(--white); font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.12em; padding: 4px 10px; margin-bottom: 20px; align-self: flex-start; }
+.dist-badge.free { background: #22c55e; }
+.dist-badge.b2b { background: #3b82f6; }
+.dist-num { font-family: 'Anton', sans-serif; font-size: clamp(32px, 5vw, 56px); color: var(--white); line-height: 1; margin-bottom: 8px; }
+.dist-sub { font-size: 13px; color: rgba(255,255,255,0.4); margin-bottom: 14px; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; }
+.dist-desc { font-size: 14px; color: rgba(255,255,255,0.6); line-height: 1.6; margin-bottom: 28px; flex: 1; }
+.btn-dist { display: inline-block; border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.7); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; padding: 10px 20px; transition: all 0.15s; align-self: flex-start; }
+.btn-dist:hover { border-color: var(--orange); color: var(--orange); }
+.dist-time { position: absolute; top: 24px; right: 24px; font-size: 11px; color: rgba(255,255,255,0.25); font-weight: 600; text-align: right; line-height: 1.4; }
+@media (max-width: 720px) { .dist-grid { grid-template-columns: 1fr; } }
 
-  /* HERO */
-  .hero { position: relative; min-height: 92vh; display: flex; align-items: flex-end; overflow: hidden; background: var(--dark); }
-  .hero-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.5; }
-  .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.1) 100%); }
-  .hero-inner { position: relative; z-index: 2; max-width: var(--max); margin: 0 auto; padding: 80px 40px 60px; width: 100%; }
-  .hero-badge { display: inline-block; background: var(--orange); color: var(--white); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em; padding: 5px 14px; margin-bottom: 20px; }
-  .hero h1 { font-family: 'Barlow Condensed', sans-serif; font-size: clamp(48px, 9vw, 96px); font-weight: 900; color: var(--white); line-height: 0.95; text-transform: uppercase; margin-bottom: 20px; }
-  .hero h1 em { color: var(--orange); font-style: normal; display: block; }
-  .hero-sub { color: rgba(255,255,255,0.75); font-size: 16px; font-weight: 400; margin-bottom: 32px; max-width: 520px; }
-  .hero-sub strong { color: var(--white); font-weight: 600; }
-  .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
-  .btn-primary { display: inline-block; background: var(--orange); color: var(--white); font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; padding: 14px 28px; transition: background 0.15s; }
-  .btn-primary:hover { background: var(--orange-dark); color: var(--white); }
-  .btn-ghost { display: inline-block; border: 2px solid rgba(255,255,255,0.4); color: var(--white); font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; padding: 12px 26px; transition: all 0.15s; }
-  .btn-ghost:hover { border-color: var(--white); }
-  .hero-stats { display: flex; gap: 40px; margin-top: 48px; padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.15); flex-wrap: wrap; }
-  .hero-stat .val { font-family: 'Barlow Condensed', sans-serif; font-size: 36px; font-weight: 800; color: var(--orange); line-height: 1; }
-  .hero-stat .lbl { font-size: 12px; color: rgba(255,255,255,0.55); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 3px; }
-  @media (max-width: 640px) { .hero { min-height: 100svh; } .hero-inner { padding: 40px 20px 48px; } .hero h1 { font-size: 52px; } .hero-stats { gap: 24px; } }
+/* ── COMPANY CHAMPION ── */
+.cc-section { background: var(--dark2); }
+.cc-inner { max-width: var(--max); margin: 0 auto; padding: 96px 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.cc-tag { display: inline-block; background: rgba(59,130,246,0.15); border: 1px solid rgba(59,130,246,0.35); color: #60a5fa; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; padding: 5px 12px; margin-bottom: 16px; }
+.cc-title { font-family: 'Anton', sans-serif; font-size: clamp(28px, 4vw, 48px); text-transform: uppercase; line-height: 1; margin-bottom: 16px; }
+.cc-sub { font-size: 15px; color: rgba(255,255,255,0.55); line-height: 1.7; margin-bottom: 36px; }
+.cc-points { display: flex; flex-direction: column; gap: 16px; margin-bottom: 36px; }
+.cc-point { display: flex; gap: 14px; align-items: flex-start; }
+.cc-icon { width: 36px; height: 36px; background: rgba(240,120,0,0.12); border: 1px solid rgba(240,120,0,0.25); display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+.cc-point-text strong { display: block; font-size: 14px; font-weight: 700; margin-bottom: 2px; }
+.cc-point-text span { font-size: 13px; color: rgba(255,255,255,0.5); }
+.cc-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; }
+.cc-stat { background: var(--dark3); padding: 24px; text-align: center; }
+.cc-stat .val { font-family: 'Anton', sans-serif; font-size: 36px; color: var(--orange); line-height: 1; }
+.cc-stat .lbl { font-size: 11px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.07em; margin-top: 4px; }
+.btn-cc { display: inline-block; background: var(--orange); color: var(--white); font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; padding: 14px 28px; transition: background 0.15s; }
+.btn-cc:hover { background: var(--orange2); color: var(--white); }
+@media (max-width: 820px) { .cc-inner { grid-template-columns: 1fr; gap: 40px; padding: 64px 20px; } }
 
+/* ── QUICK INFO GRID ── */
+.qi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; }
+.qi-card { background: var(--dark2); padding: 32px 28px; border-top: 3px solid transparent; transition: border-color 0.2s; }
+.qi-card:hover { border-color: var(--orange); }
+.qi-emoji { font-size: 32px; margin-bottom: 16px; display: block; }
+.qi-title { font-size: 15px; font-weight: 700; margin-bottom: 8px; }
+.qi-sub { font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.6; }
+.qi-badge { display: inline-block; background: rgba(34,197,94,0.12); border: 1px solid rgba(34,197,94,0.3); color: #4ade80; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; padding: 3px 8px; margin-top: 10px; }
+@media (max-width: 900px) { .qi-grid { grid-template-columns: repeat(2,1fr); } }
+@media (max-width: 480px) { .qi-grid { grid-template-columns: 1fr; } }
 
-  /* SECTIONS */
-  .section { padding: 80px 0; }
-  .section.dark { background: var(--dark); color: var(--white); }
-  .section.grey { background: var(--light); }
-  .container { max-width: var(--max); margin: 0 auto; padding: 0 40px; }
-  .section-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.16em; color: var(--orange); margin-bottom: 8px; }
-  .section-title { font-family: 'Barlow Condensed', sans-serif; font-size: clamp(28px, 5vw, 48px); font-weight: 800; text-transform: uppercase; line-height: 1.05; margin-bottom: 32px; }
-  .section.dark .section-title { color: var(--white); }
+/* ── STARTZEITEN ── */
+.sz-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; margin-bottom: 2px; }
+.sz-card { background: var(--dark2); padding: 28px 24px; border-top: 3px solid var(--dark3); transition: border-color 0.15s; }
+.sz-card:hover { border-color: var(--orange); }
+.sz-dist { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255,255,255,0.4); margin-bottom: 8px; }
+.sz-time { font-family: 'Anton', sans-serif; font-size: 44px; color: var(--orange); line-height: 1; }
+.sz-loc { font-size: 11px; color: rgba(255,255,255,0.25); margin-top: 4px; }
+.cutoff { background: var(--dark3); padding: 14px 24px; font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.6); }
+.cutoff strong { color: var(--orange); }
+@media (max-width: 720px) { .sz-grid { grid-template-columns: repeat(2,1fr); } }
 
-  /* COUNTDOWN BAR */
-  .cd-bar { background: var(--orange); }
-  .cd-inner { max-width: var(--max); margin: 0 auto; padding: 16px 40px; display: flex; align-items: center; gap: 32px; }
-  .cd-units { display: flex; gap: 24px; }
-  .cd-unit { display: flex; align-items: baseline; gap: 6px; }
-  .cd-num { font-family: 'Barlow Condensed', sans-serif; font-size: 32px; font-weight: 800; color: var(--white); line-height: 1; }
-  .cd-lbl { font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.8); text-transform: uppercase; letter-spacing: 0.06em; }
-  .cd-sep { color: rgba(255,255,255,0.4); font-size: 20px; }
+/* ── GETPICA ── */
+.gp-section { background: var(--dark2); }
+.gp-inner { max-width: var(--max); margin: 0 auto; padding: 96px 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.gp-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.16em; color: var(--orange); margin-bottom: 10px; }
+.gp-title { font-family: 'Anton', sans-serif; font-size: clamp(28px, 4vw, 52px); text-transform: uppercase; line-height: 1; margin-bottom: 16px; }
+.gp-sub { font-size: 15px; color: rgba(255,255,255,0.5); line-height: 1.7; margin-bottom: 36px; }
+.gp-steps { display: flex; flex-direction: column; gap: 16px; margin-bottom: 36px; }
+.gp-step { display: flex; gap: 14px; align-items: center; }
+.gp-num { width: 32px; height: 32px; background: var(--orange); color: var(--white); font-family: 'Anton', sans-serif; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.gp-step-txt { font-size: 14px; color: rgba(255,255,255,0.7); }
+.gp-step-txt strong { color: var(--white); }
+.gp-img { position: relative; }
+.gp-img img { width: 100%; height: 400px; object-fit: cover; object-position: center top; }
+.gp-img-badge { position: absolute; top: -14px; right: -14px; background: var(--orange); color: var(--white); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; padding: 10px 16px; }
+@media (max-width: 820px) { .gp-inner { grid-template-columns: 1fr; gap: 40px; padding: 64px 20px; } .gp-img { display: none; } }
 
-  /* WEATHER ALERT */
-  .weather-alert { background: var(--dark2); border-left: 5px solid var(--orange); padding: 20px 28px; margin-bottom: 0; display: flex; gap: 16px; align-items: flex-start; }
-  .weather-alert .wa-icon { font-size: 28px; flex-shrink: 0; }
-  .weather-alert h3 { font-size: 15px; font-weight: 700; color: var(--white); margin-bottom: 4px; }
-  .weather-alert p { font-size: 13px; color: rgba(255,255,255,0.7); line-height: 1.6; }
+/* ── CLOSING HERO ── */
+.closing { position: relative; padding: 120px 0; overflow: hidden; }
+.closing-bg { position: absolute; inset: 0; background: linear-gradient(135deg, var(--dark2) 0%, var(--dark3) 100%); }
+.closing-accent { position: absolute; top: -100px; right: -100px; width: 500px; height: 500px; border-radius: 50%; background: rgba(240,120,0,0.06); }
+.closing-inner { position: relative; z-index: 2; max-width: var(--max); margin: 0 auto; padding: 0 40px; text-align: center; }
+.closing-title { font-family: 'Anton', sans-serif; font-size: clamp(32px, 6vw, 72px); text-transform: uppercase; line-height: 1; margin-bottom: 16px; }
+.closing-title em { color: var(--orange); font-style: normal; }
+.closing-sub { font-size: 16px; color: rgba(255,255,255,0.5); margin-bottom: 40px; }
+@media (max-width: 640px) { .closing { padding: 80px 0; } .closing-inner { padding: 0 20px; } }
 
-  /* TEASER CARDS */
-  .teaser-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 2px; }
-  .teaser-card { position: relative; overflow: hidden; aspect-ratio: 4/3; background: var(--dark2); display: flex; align-items: flex-end; }
-  .teaser-card img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.6; transition: transform 0.4s, opacity 0.3s; }
-  .teaser-card:hover img { transform: scale(1.04); opacity: 0.5; }
-  .teaser-body { position: relative; z-index: 2; padding: 24px 20px; width: 100%; background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 100%); }
-  .teaser-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--orange); margin-bottom: 4px; }
-  .teaser-title { font-family: 'Barlow Condensed', sans-serif; font-size: 22px; font-weight: 800; color: var(--white); text-transform: uppercase; margin-bottom: 8px; line-height: 1.1; }
-  .teaser-link { font-size: 12px; font-weight: 600; color: var(--orange); text-transform: uppercase; letter-spacing: 0.08em; }
-  .teaser-link::after { content: ' →'; }
+/* ── SPONSORS ── */
+.sponsors { background: #080808; padding: 56px 0; border-top: 1px solid rgba(255,255,255,0.05); }
+.sponsors-inner { max-width: var(--max); margin: 0 auto; padding: 0 40px; }
+.sponsors-label { text-align: center; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em; color: rgba(255,255,255,0.2); margin-bottom: 32px; }
+.sponsors-grid { display: flex; align-items: center; justify-content: center; gap: 48px; flex-wrap: wrap; }
+.sponsors-grid img { height: 36px; filter: brightness(0) invert(1); opacity: 0.35; transition: opacity 0.2s; }
+.sponsors-grid img:hover { opacity: 0.7; }
+.sponsor-obermayr { height: 52px !important; }
+@media (max-width: 640px) { .sponsors-inner { padding: 0 20px; } .sponsors-grid { gap: 28px; } }
 
-  /* STARTZEITEN */
-  .sz-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 2px; margin-bottom: 8px; }
-  .sz-card { background: var(--light); padding: 28px 24px; border-top: 4px solid var(--border); transition: border-color 0.15s; }
-  .sz-card:hover { border-color: var(--orange); }
-  .sz-dist { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--mid); margin-bottom: 8px; }
-  .sz-time { font-family: 'Barlow Condensed', sans-serif; font-size: 44px; font-weight: 800; color: var(--orange); line-height: 1; }
-  .sz-note { font-size: 12px; color: #aaa; margin-top: 4px; }
-  .cutoff { background: var(--dark); color: var(--white); padding: 14px 24px; font-size: 14px; font-weight: 600; }
-  .cutoff span { color: var(--orange); }
-
-  /* INFO CARDS */
-  .info-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 2px; }
-  .info-card { background: var(--light); padding: 28px 24px; }
-  .info-card .ic-icon { font-size: 28px; margin-bottom: 12px; display: block; }
-  .info-card .ic-title { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; color: var(--dark); }
-  .info-card p, .info-card li { font-size: 13px; color: var(--mid); line-height: 1.65; }
-  .info-card ul { list-style: none; padding: 0; }
-  .info-card ul li { padding: 3px 0; }
-  .info-card ul li::before { content: '→ '; color: var(--orange); font-weight: 700; }
-  .section.dark .info-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); }
-  .section.dark .info-card .ic-title { color: var(--white); }
-  .section.dark .info-card p, .section.dark .info-card li { color: rgba(255,255,255,0.65); }
-
-  /* GETPICA */
-  .getpica-section { background: var(--dark); padding: 80px 0; }
-  .getpica-inner { max-width: var(--max); margin: 0 auto; padding: 0 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
-  .getpica-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.16em; color: var(--orange); margin-bottom: 10px; }
-  .getpica-title { font-family: 'Barlow Condensed', sans-serif; font-size: 48px; font-weight: 800; text-transform: uppercase; color: var(--white); line-height: 1; margin-bottom: 16px; }
-  .getpica-sub { font-size: 15px; color: rgba(255,255,255,0.65); line-height: 1.7; margin-bottom: 28px; }
-  .getpica-steps { display: flex; flex-direction: column; gap: 16px; margin-bottom: 32px; }
-  .getpica-step { display: flex; gap: 14px; align-items: flex-start; }
-  .getpica-step .step-num { background: var(--orange); color: var(--white); font-family: 'Barlow Condensed', sans-serif; font-size: 18px; font-weight: 800; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-  .getpica-step .step-text { font-size: 14px; color: rgba(255,255,255,0.75); padding-top: 6px; line-height: 1.5; }
-  .getpica-step .step-text strong { color: var(--white); }
-  .getpica-visual { position: relative; }
-  .getpica-visual img { width: 100%; border-radius: 2px; }
-  .getpica-badge { position: absolute; top: -16px; right: -16px; background: var(--orange); color: var(--white); font-family: 'Barlow Condensed', sans-serif; font-size: 14px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; padding: 10px 16px; }
-  @media (max-width: 768px) { .getpica-inner { grid-template-columns: 1fr; gap: 40px; } .getpica-visual { display: none; } .getpica-inner { padding: 0 20px; } }
-
-  /* FOOTER */
-  .footer { background: #080808; color: rgba(255,255,255,0.4); padding: 48px 0 32px; font-size: 13px; }
-  .footer-inner { max-width: var(--max); margin: 0 auto; padding: 0 40px; }
-  .footer-top { display: grid; grid-template-columns: auto 1fr auto; gap: 48px; align-items: start; margin-bottom: 40px; }
-  .footer-logo img { height: 36px; opacity: 0.5; filter: brightness(0) invert(1); }
-  .footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
-  .footer-links a { color: rgba(255,255,255,0.4); font-size: 12px; }
-  .footer-links a:hover { color: var(--orange); }
-  .footer-sponsors { display: flex; align-items: center; gap: 20px; }
-  .footer-sponsors img { height: 28px; opacity: 0.4; filter: brightness(0) invert(1); }
-  .footer-sponsors img:hover { opacity: 0.7; }
-  .footer-bottom { padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.06); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
-  @media (max-width: 768px) { .footer-top { grid-template-columns: 1fr; gap: 24px; } .footer-inner { padding: 0 20px; } }
-
-  /* UTILS */
-  @media (max-width: 640px) { .container { padding: 0 20px; } .section { padding: 56px 0; } .cd-inner { padding: 14px 20px; } }
-  .tl-warn { display: inline-block; background: #c0392b; color: var(--white); font-size: 11px; font-weight: 700; padding: 3px 10px; text-transform: uppercase; letter-spacing: 0.06em; margin-top: 6px; }
-  .timeline { padding-left: 24px; position: relative; }
-  .timeline::before { content: ''; position: absolute; left: 6px; top: 8px; bottom: 8px; width: 2px; background: var(--border); }
-  .tl-item { position: relative; margin-bottom: 24px; }
-  .tl-item::before { content: ''; position: absolute; left: -21px; top: 6px; width: 10px; height: 10px; border-radius: 50%; background: var(--orange); border: 2px solid var(--white); outline: 2px solid var(--orange); }
-  .tl-title { font-size: 16px; font-weight: 700; margin-bottom: 3px; }
-  .tl-day { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #aaa; margin-bottom: 2px; }
-  .tl-detail { font-size: 14px; color: var(--mid); }
-  details summary::-webkit-details-marker { display: none; }
-  details { border-top: 1px solid var(--border); }
-  details summary { padding: 16px 0; font-size: 14px; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; align-items: center; list-style: none; }
-  details summary::after { content: '+'; color: var(--orange); font-size: 20px; font-weight: 300; }
-  details[open] summary::after { content: '−'; }
-  details .detail-body { padding: 0 0 16px; font-size: 13px; color: var(--mid); line-height: 1.7; }
-
+/* ── FOOTER ── */
+.footer { background: var(--dark); padding: 40px 0 28px; border-top: 1px solid rgba(255,255,255,0.05); }
+.footer-inner { max-width: var(--max); margin: 0 auto; padding: 0 40px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+.footer-logo img { height: 32px; filter: brightness(0) invert(1); opacity: 0.4; }
+.footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
+.footer-links a { color: rgba(255,255,255,0.3); font-size: 12px; transition: color 0.15s; }
+.footer-links a:hover { color: rgba(255,255,255,0.7); }
+.footer-copy { color: rgba(255,255,255,0.2); font-size: 12px; width: 100%; text-align: center; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.04); margin-top: 8px; }
+@media (max-width: 640px) { .footer-inner { padding: 0 20px; flex-direction: column; align-items: flex-start; } }
 </style>
 </head>
 <body>
 
-
-<nav class="nav-wrap">
-  <div class="nav-inner">
-    <a href="wicm_teilnehmerinfo_2026.html" class="nav-logo">
-      <img src="https://sporthilfe-wiesbaden.de/wp-content/uploads/2025/08/cmw_logo_4c-3.png" alt="City Marathon Wiesbaden">
-    </a>
-    <div class="nav-links">
-      <a href="wicm_teilnehmerinfo_2026.html" class="active">Home</a>
-      <div class="has-dropdown">
-        <a href="#">Infos</a>
-        <div class="nav-dropdown">
-          <a href="wicm_ausgabe_2026.html">Startnummern & Expo</a>
-          <a href="wicm_strecken_2026.html">Strecken & VP</a>
-          <a href="wicm_anreise_2026.html">Anreise & Parken</a>
-          <a href="wicm_strecken_2026.html#staffel">Staffel-Marathon</a>
-        </div>
-      </div>
-      <a href="wicm_faq_2026.html">FAQ</a>
-      <a href="wicm_fotos_2026.html">Fotos</a>
-      <a href="wicm_anreise_2026.html#anwohner">Anwohner</a>
-    </div>
-    <div class="nav-right">
-      <div class="nav-lang">
-        <a href="wicm_teilnehmerinfo_2026.html" class="active">DE</a>
-        <span>|</span>
-        <a href="wicm_teilnehmerinfo_2026_en.html">EN</a>
-      </div>
-      <div class="hamburger" id="hamburger">
-        <span></span><span></span><span></span>
-      </div>
-    </div>
-  </div>
-  <div class="mobile-menu" id="mobile-menu">
-    <a href="wicm_teilnehmerinfo_2026.html">Home</a>
-    <a href="wicm_ausgabe_2026.html">Startnummern & Expo</a>
-    <a href="wicm_strecken_2026.html">Strecken & VP</a>
-    <a href="wicm_anreise_2026.html">Anreise & Parken</a>
-    <a href="wicm_strecken_2026.html#staffel">Staffel-Marathon</a>
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <a href="wicm_index_2026.html" class="nav-logo">
+    <img src="https://sporthilfe-wiesbaden.de/wp-content/uploads/2025/08/cmw_logo_4c-3.png" alt="City Marathon Wiesbaden">
+  </a>
+  <div class="nav-links">
+    <a href="#distanzen">Distanzen</a>
+    <a href="wicm_ausgabe_2026.html">Startnummern</a>
+    <a href="wicm_strecken_2026.html">Strecken</a>
+    <a href="wicm_anreise_2026.html">Anreise</a>
     <a href="wicm_faq_2026.html">FAQ</a>
     <a href="wicm_fotos_2026.html">Fotos</a>
-    <a href="wicm_anreise_2026.html#anwohner">Anwohner</a>
-    <a href="wicm_teilnehmerinfo_2026_en.html" style="color:#F07800;">🇬🇧 English</a>
+  </div>
+  <div class="nav-right">
+    <div class="nav-lang">
+      <a href="wicm_index_2026.html" class="on">DE</a>
+      <span>|</span>
+      <a href="wicm_teilnehmerinfo_2026_en.html">EN</a>
+    </div>
+    <a href="https://xivado.com/de/events/city-marathon-wiesbaden/2026" target="_blank" class="nav-cta">Anmelden</a>
+    <button class="hamburger" id="ham" aria-label="Menü">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
-
+<div class="mob-menu" id="mob">
+  <a href="#distanzen">Distanzen</a>
+  <a href="wicm_ausgabe_2026.html">Startnummern & Expo</a>
+  <a href="wicm_strecken_2026.html">Strecken & GPX</a>
+  <a href="wicm_anreise_2026.html">Anreise & Parken</a>
+  <a href="wicm_faq_2026.html">FAQ</a>
+  <a href="wicm_fotos_2026.html">Fotos</a>
+  <a href="wicm_teilnehmerinfo_2026_en.html" style="color:var(--orange);">🇬🇧 English</a>
+  <a href="https://xivado.com/de/events/city-marathon-wiesbaden/2026" target="_blank" style="color:var(--orange);font-weight:700;">Jetzt anmelden →</a>
+</div>
 
 <!-- HERO -->
 <section class="hero">
   <img class="hero-bg" src="https://sporthilfe-wiesbaden.de/files/wicm2627_photo.jpg" alt="City Marathon Wiesbaden 2026 Start">
-  <div class="hero-overlay"></div>
+  <div class="hero-grad"></div>
   <div class="hero-inner">
-    <div class="hero-badge">Teilnehmer-Information</div>
-    <h1>City Marathon<em>Wiesbaden 2026</em></h1>
+    <div class="hero-badge">5. City Marathon Wiesbaden · 20. Juni 2026</div>
+    <h1>Wiesbaden läuft<br>wieder.
+      <span class="accent">Dein Moment.<br>Deine Stadt.</span>
+    </h1>
     <p class="hero-sub">
-      <strong>Samstag, 20. Juni 2026</strong> &nbsp;·&nbsp;
-      Start & Ziel: Kranzplatz, 65183 Wiesbaden &nbsp;·&nbsp;
-      Start ab 18:45 Uhr
+      <strong>Samstag, 20. Juni 2026</strong> – Start & Ziel: Kranzplatz, Wiesbaden.<br>
+      Fünf Distanzen. Eine Stadt. Ein unvergesslicher Abend.
     </p>
     <div class="hero-ctas">
-      <a href="wicm_ausgabe_2026.html" class="btn-primary">Startnummern & Expo →</a>
-      <a href="wicm_strecken_2026.html" class="btn-ghost">Strecken & GPX</a>
+      <a href="https://xivado.com/de/events/city-marathon-wiesbaden/2026" target="_blank" class="btn-hero primary">Jetzt anmelden</a>
+      <a href="wicm_ausgabe_2026.html" class="btn-hero outline">Teilnehmerinfos</a>
     </div>
     <div class="hero-stats">
-      <div class="hero-stat"><div class="val" id="cd-days">–</div><div class="lbl">Tage bis Start</div></div>
-      <div class="hero-stat"><div class="val">5</div><div class="lbl">Distanzen</div></div>
-      <div class="hero-stat"><div class="val">18:45</div><div class="lbl">Erster Start</div></div>
-      <div class="hero-stat"><div class="val">00:00</div><div class="lbl">Zielschluss</div></div>
+      <div class="hs"><div class="hs-val" id="cd-days">–</div><div class="hs-lbl">Tage bis Start</div></div>
+      <div class="hs"><div class="hs-val">5</div><div class="hs-lbl">Distanzen</div></div>
+      <div class="hs"><div class="hs-val">18:45</div><div class="hs-lbl">Erster Start</div></div>
+      <div class="hs"><div class="hs-val">00:00</div><div class="hs-lbl">Zielschluss</div></div>
     </div>
   </div>
 </section>
 
-<!-- WETTER -->
-<div class="section dark" style="padding:0;">
-  <div class="container" style="padding-top:0;padding-bottom:0;">
-    <div class="weather-alert">
-      <span class="wa-icon">☀️</span>
-      <div>
-        <h3>Wetter-Update: Warmer Sommertag erwartet</h3>
-        <p>Wir haben zusätzliche Verpflegungspunkte eingerichtet (alle 1,5 km) und stehen in engem Kontakt mit dem Deutschen Wetterdienst. Kopfbedeckung & Sonnencreme mitbringen!</p>
-      </div>
+<!-- COUNTDOWN -->
+<div class="cd-bar">
+  <div class="cd-bar-inner">
+    <span class="cd-label">Countdown</span>
+    <div class="cd-units">
+      <div class="cd-unit"><span class="cd-n" id="cd2-days">–</span><span class="cd-u">Tage</span></div>
+      <div class="cd-unit"><span class="cd-n" id="cd2-hours">–</span><span class="cd-u">Std</span></div>
+      <div class="cd-unit"><span class="cd-n" id="cd2-mins">–</span><span class="cd-u">Min</span></div>
     </div>
   </div>
 </div>
 
+<!-- ANNOUNCEMENT -->
+<div class="announce">
+  <div class="announce-inner">
+    <span class="announce-icon">⚡</span>
+    <div class="announce-text">
+      <strong>Neue Eventlocation 2026:</strong> Fokus Kranzplatz – kompakter, schneller, stimmungsvoller. Wir umgehen die WM-Fanzonen für dein perfektes Rennerlebnis. Start, Ziel & Expo: <strong>Kranzplatz, 65183 Wiesbaden</strong>
+    </div>
+    <div class="announce-tag">Update 2026</div>
+  </div>
+</div>
+
+<!-- DISTANZEN -->
+<section class="section" id="distanzen" style="background:var(--dark);">
+  <div class="container">
+    <div class="sec-label">Wähle deine Herausforderung</div>
+    <div class="sec-title">Deine Distanz</div>
+    <p class="sec-sub">Von der Kinderrunde bis zum vollen Marathon – der City Marathon Wiesbaden hat für jeden die richtige Herausforderung.</p>
+    <div class="dist-grid">
+
+      <div class="dist-card">
+        <div class="dist-time">Sa 20. Juni<br>Start 19:00</div>
+        <div class="dist-badge">Flagship</div>
+        <div class="dist-num">42,2 / 21,1</div>
+        <div class="dist-sub">Marathon & Halbmarathon</div>
+        <p class="dist-desc">Die Königsdisziplin durch Wiesbaden. Sechs Runden (Marathon) oder drei Runden (Halbmarathon) durch das Herz der Landeshauptstadt. Für Ambitionierte, die sich an ihre Grenzen pushen wollen.</p>
+        <a href="wicm_strecken_2026.html" class="btn-dist">Strecke & Infos ansehen →</a>
+      </div>
+
+      <div class="dist-card">
+        <div class="dist-time">Sa 20. Juni<br>Start 18:45 / 18:55</div>
+        <div class="dist-badge">City Run</div>
+        <div class="dist-num">10 / 5</div>
+        <div class="dist-sub">10 km & 5 km</div>
+        <p class="dist-desc">Der perfekte Einstieg ins Laufen – oder der ideale Wettkampf für Hobby-Läufer. Wiesbaden im Laufschritt erleben, ohne Kompromisse beim Erlebnis.</p>
+        <a href="wicm_strecken_2026.html" class="btn-dist">Strecke & Infos ansehen →</a>
+      </div>
+
+      <div class="dist-card">
+        <div class="dist-time">Sa 20. Juni<br>Start 19:30</div>
+        <div class="dist-badge free">Kostenfrei</div>
+        <div class="dist-num">3</div>
+        <div class="dist-sub">Kids Run & Schulklassenlauf</div>
+        <p class="dist-desc">Drei Kilometer für die Kleinsten – und Freitag, 19. Juni für Schulklassen ab Klasse 1. Kostenlose Anmeldung im Klassenverband. Der perfekte Einstieg in die Laufwelt.</p>
+        <a href="wicm_strecken_2026.html" class="btn-dist">Strecke & Infos ansehen →</a>
+      </div>
+
+      <div class="dist-card">
+        <div class="dist-time">Sa 20. Juni<br>Start 19:15</div>
+        <div class="dist-badge b2b">Business</div>
+        <div class="dist-num">Company<br>Champion</div>
+        <div class="dist-sub">Firmenlauf & Staffel</div>
+        <p class="dist-desc">Teams messen sich über 5 km. Drei Läufer, addierte Zeiten – das stärkt den Teamgeist und pusht die Motivation. Preis für die schnellste Wiesbadener Firma.</p>
+        <a href="#firmenlauf" class="btn-dist">Strecke & Infos ansehen →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- STARTZEITEN -->
-<section class="section">
+<section class="section tight" style="background:var(--dark2);">
   <div class="container">
-    <div class="section-label">Samstag, 20. Juni 2026</div>
-    <div class="section-title">Startzeiten</div>
+    <div class="sec-label">Samstag, 20. Juni 2026</div>
+    <div class="sec-title" style="margin-bottom:32px;">Startzeiten</div>
     <div class="sz-grid">
-      <div class="sz-card"><div class="sz-dist">10 km</div><div class="sz-time">18:45</div><div class="sz-note">Kranzplatz</div></div>
-      <div class="sz-card"><div class="sz-dist">5 km</div><div class="sz-time">18:55</div><div class="sz-note">Kranzplatz</div></div>
-      <div class="sz-card"><div class="sz-dist">Halbmarathon &amp; Marathon</div><div class="sz-time">19:00</div><div class="sz-note">Kranzplatz</div></div>
-      <div class="sz-card"><div class="sz-dist">3 km</div><div class="sz-time">19:30</div><div class="sz-note">Kranzplatz</div></div>
+      <div class="sz-card"><div class="sz-dist">10 km</div><div class="sz-time">18:45</div><div class="sz-loc">Kranzplatz</div></div>
+      <div class="sz-card"><div class="sz-dist">5 km</div><div class="sz-time">18:55</div><div class="sz-loc">Kranzplatz</div></div>
+      <div class="sz-card"><div class="sz-dist">HM & Marathon</div><div class="sz-time">19:00</div><div class="sz-loc">Kranzplatz</div></div>
+      <div class="sz-card"><div class="sz-dist">3 km</div><div class="sz-time">19:30</div><div class="sz-loc">Kranzplatz</div></div>
     </div>
-    <div class="cutoff">Zielschluss: <span>00:00 Uhr (Mitternacht)</span> &nbsp;·&nbsp; Siegerehrungen: 20:00 / 21:00 / 23:00 Uhr</div>
+    <div class="cutoff">Zielschluss: <strong>00:00 Uhr (Mitternacht)</strong> &nbsp;·&nbsp; Siegerehrungen: 20:00 / 21:00 / 23:00 Uhr</div>
   </div>
 </section>
 
-<!-- TEASER GRID -->
-<section class="section dark" style="padding:2px 0 0;">
-  <div class="teaser-grid">
-    <a href="wicm_strecken_2026.html" class="teaser-card">
-      <img src="https://sporthilfe-wiesbaden.de/wp-content/uploads/2026/05/10k-450x300.jpg" alt="Alle Distanzen, GPX & VP-Infos">
-      <div class="teaser-body">
-        <div class="teaser-label">Strecken & Verpflegung</div>
-        <div class="teaser-title">Alle Distanzen, GPX & VP-Infos</div>
-        <div class="teaser-link">Mehr erfahren</div>
+<!-- COMPANY CHAMPION -->
+<section class="cc-section" id="firmenlauf">
+  <div class="cc-inner">
+    <div>
+      <div class="cc-tag">B2B & Teams</div>
+      <div class="cc-title">Company<br>Champion</div>
+      <p class="cc-sub">Wer ist die schnellste Firma Wiesbadens? Tretet als Team an und sichert euch den Titel – auf der 5km-Strecke zählen addierte Zeiten.</p>
+      <div class="cc-points">
+        <div class="cc-point">
+          <div class="cc-icon">👥</div>
+          <div class="cc-point-text"><strong>3er-Teams</strong><span>Drei Läufer, eine Firma, eine addierte Gesamtzeit</span></div>
+        </div>
+        <div class="cc-point">
+          <div class="cc-icon">🏆</div>
+          <div class="cc-point-text"><strong>Beste Firma Wiesbaden</strong><span>Preis für das schnellste Team & die meisten Teilnehmer</span></div>
+        </div>
+        <div class="cc-point">
+          <div class="cc-icon">📝</div>
+          <div class="cc-point-text"><strong>Anmeldung mit Firmennamen</strong><span>Exakt gleichen Namen bei allen Teammitgliedern eintragen</span></div>
+        </div>
+        <div class="cc-point">
+          <div class="cc-icon">🕖</div>
+          <div class="cc-point-text"><strong>Start: 19:15 Uhr</strong><span>Samstag, 20. Juni 2026 · 5 km · Kranzplatz</span></div>
+        </div>
       </div>
-    </a><a href="wicm_ausgabe_2026.html" class="teaser-card">
-      <img src="https://sporthilfe-wiesbaden.de/wp-content/uploads/2026/06/kranzplatz2026.png" alt="Ausgabe, Zeiten & Vollmacht">
-      <div class="teaser-body">
-        <div class="teaser-label">Startnummern & Expo</div>
-        <div class="teaser-title">Ausgabe, Zeiten & Vollmacht</div>
-        <div class="teaser-link">Mehr erfahren</div>
+      <a href="https://xivado.com/de/events/city-marathon-wiesbaden/2026" target="_blank" class="btn-cc">Firma anmelden</a>
+    </div>
+    <div>
+      <div class="cc-stats">
+        <div class="cc-stat"><div class="val">3</div><div class="lbl">Läufer / Team</div></div>
+        <div class="cc-stat"><div class="val">5</div><div class="lbl">Kilometer</div></div>
+        <div class="cc-stat"><div class="val">19:15</div><div class="lbl">Startzeit</div></div>
       </div>
-    </a><a href="wicm_anreise_2026.html" class="teaser-card">
-      <img src="https://sporthilfe-wiesbaden.de/wp-content/uploads/2026/05/m_hm-450x300.jpg" alt="ÖPNV, Parken, Sperrungen">
-      <div class="teaser-body">
-        <div class="teaser-label">Anreise & Parken</div>
-        <div class="teaser-title">ÖPNV, Parken, Sperrungen</div>
-        <div class="teaser-link">Mehr erfahren</div>
-      </div>
-    </a><a href="wicm_faq_2026.html" class="teaser-card">
-      <img src="https://sporthilfe-wiesbaden.de/wp-content/uploads/2026/06/eventgelaende2026-scaled.png" alt="Alle häufigen Fragen">
-      <div class="teaser-body">
-        <div class="teaser-label">FAQ</div>
-        <div class="teaser-title">Alle häufigen Fragen</div>
-        <div class="teaser-link">Mehr erfahren</div>
-      </div>
-    </a>
+    </div>
   </div>
 </section>
 
-<!-- BESTÄTIGUNGSMAIL -->
-<section class="section grey">
+<!-- ATHLETEN-QUICK-INFO -->
+<section class="section" style="background:var(--dark);">
   <div class="container">
-    <div class="section-label">Rennwoche</div>
-    <div class="section-title">Deine Bestätigungsmail</div>
-    <div class="info-grid">
-      <div class="info-card">
-        <span class="ic-icon">📧</span>
-        <div class="ic-title">Erneuter Versand 15./16. Juni</div>
-        <p>Alle Teilnehmenden erhalten ihre Bestätigungsmail nochmals – mit QR-Code, Anmeldedaten und ggf. RMV-Hinweis.</p>
-      </div>
-      <div class="info-card">
-        <span class="ic-icon">📱</span>
-        <div class="ic-title">QR-Code</div>
-        <p>Smartphone genügt – Display hell und entsperrt halten. Kein Ausdruck nötig.</p>
-      </div>
-      <div class="info-card">
-        <span class="ic-icon">🚆</span>
-        <div class="ic-title">RMV-Kombi-Ticket</div>
-        <p>Nur wenn bei der Anmeldung gebucht. Kein separates Ticket – das RMV-Logo im unteren Teil der Bestätigungsmail ist der Fahrausweis.</p>
-      </div>
-      <div class="info-card">
-        <span class="ic-icon">👛</span>
-        <div class="ic-title">Apple / Google Wallet</div>
-        <p>Direkt aus der Mail zur Wallet hinzufügen – auch offline verfügbar.</p>
-      </div>
+    <div class="sec-label">Alles auf einen Blick</div>
+    <div class="sec-title" style="margin-bottom:48px;">Athleten-Infos</div>
+    <div class="qi-grid">
+      <a href="wicm_ausgabe_2026.html" class="qi-card">
+        <span class="qi-emoji">📋</span>
+        <div class="qi-title">Zeitplan & Ablauf</div>
+        <div class="qi-sub">Von der Startnummernausgabe bis zur Siegerehrung – alle Zeiten und Orte.</div>
+      </a>
+      <a href="wicm_faq_2026.html" class="qi-card">
+        <span class="qi-emoji">🗺️</span>
+        <div class="qi-title">Race Guide & FAQ</div>
+        <div class="qi-sub">Anfahrt, Parken, Verpflegung, Beutelzelt und alle häufigen Fragen.</div>
+      </a>
+      <a href="wicm_ausgabe_2026.html#rmv" class="qi-card">
+        <span class="qi-emoji">🚆</span>
+        <div class="qi-title">RMV Kombi-Ticket</div>
+        <div class="qi-sub">Kostenlose Anfahrt inklusive – wenn bei der Anmeldung gebucht.</div>
+        <div class="qi-badge">Kostenlose Anfahrt</div>
+      </a>
+      <a href="wicm_ausgabe_2026.html" class="qi-card">
+        <span class="qi-emoji">🏅</span>
+        <div class="qi-title">Medaillengravur</div>
+        <div class="qi-sub">Name & Zeit – dein persönliches Finisher-Upgrade direkt am Startnummerngezelt.</div>
+      </a>
     </div>
-    <p style="margin-top:16px;font-size:13px;color:var(--mid);">Spam-Ordner prüfen falls die Mail nicht ankommt. Bei Fragen: <a href="mailto:info@wiesbaden-marathon.de" style="color:var(--orange);">info@wiesbaden-marathon.de</a></p>
   </div>
 </section>
 
 <!-- GETPICA -->
-<section class="getpica-section">
-  <div class="getpica-inner">
+<section class="gp-section">
+  <div class="gp-inner">
     <div>
-      <div class="getpica-label">Deine Fotos vom Lauf</div>
-      <div class="getpica-title">Persönliche Fotos mit Getpica</div>
-      <p class="getpica-sub">Alle Lauffotos von der Veranstaltung findest du personalisiert auf Getpica. Das System erkennt dich anhand deiner Startnummer – du bekommst nur deine eigenen Fotos.</p>
-      <div class="getpica-steps">
-        <div class="getpica-step">
-          <div class="step-num">1</div>
-          <div class="step-text">Gehe auf <strong>getpica.com</strong></div>
-        </div>
-        <div class="getpica-step">
-          <div class="step-num">2</div>
-          <div class="step-text">Gib deinen <strong>persönlichen Code</strong> ein (aus der Post-Race-Mail)</div>
-        </div>
-        <div class="getpica-step">
-          <div class="step-num">3</div>
-          <div class="step-text"><strong>Deine Fotos</strong> werden angezeigt – kostenlos ansehen, downloaden oder bestellen</div>
-        </div>
+      <div class="gp-label">Post-Race · Community</div>
+      <div class="gp-title">Finde deine<br>Gänsehaut-<br>Momente</div>
+      <p class="gp-sub">Alle Lauffotos personalisiert – das System erkennt dich anhand deiner Startnummer. Nur zwei Schritte bis zu deinen Bildern.</p>
+      <div class="gp-steps">
+        <div class="gp-step"><div class="gp-num">1</div><div class="gp-step-txt">Gehe auf <strong>getpica.com</strong></div></div>
+        <div class="gp-step"><div class="gp-num">2</div><div class="gp-step-txt">Gib deinen <strong>persönlichen Code</strong> ein (aus der Post-Race-Mail)</div></div>
+        <div class="gp-step"><div class="gp-num">3</div><div class="gp-step-txt"><strong>Deine Fotos</strong> ansehen, downloaden oder bestellen</div></div>
       </div>
-      <a href="https://getpica.com" target="_blank" class="btn-primary">Zu Getpica.com →</a>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;">
+        <a href="https://getpica.com" target="_blank" class="btn-cc">Zu Getpica.com →</a>
+        <a href="wicm_fotos_2026.html" style="display:inline-block;border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.6);font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;padding:14px 24px;transition:all 0.15s;" onmouseover="this.style.borderColor='rgba(255,255,255,0.5)';this.style.color='#fff'" onmouseout="this.style.borderColor='rgba(255,255,255,0.2)';this.style.color='rgba(255,255,255,0.6)'">Alle Fotos →</a>
+      </div>
     </div>
-    <div class="getpica-visual">
-      <img src="https://sporthilfe-wiesbaden.de/wp-content/uploads/2026/06/bilder_2026/wicm2601_photo.jpg" alt="Lauffotos" style="width:100%;height:400px;object-fit:cover;" onerror="this.parentElement.style.display='none'">
-      <div class="getpica-badge">Jetzt Fotos finden</div>
+    <div class="gp-img">
+      <img src="https://sporthilfe-wiesbaden.de/files/wicm2627_photo.jpg" alt="Lauffotos Wiesbaden">
+      <div class="gp-img-badge">Jetzt Fotos finden</div>
     </div>
   </div>
 </section>
 
-<!-- ALLE FOTOS LINK -->
-<div style="background:var(--dark2);padding:20px 40px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;max-width:100%;">
-  <span style="color:rgba(255,255,255,0.6);font-size:13px;">Alle Eventfotos in der Galerie</span>
-  <a href="wicm_fotos_2026.html" class="btn-primary">Zur Fotogalerie →</a>
-</div>
+<!-- CLOSING HERO -->
+<section class="closing">
+  <div class="closing-bg"></div>
+  <div class="closing-accent"></div>
+  <div class="closing-inner">
+    <div class="closing-title">Bereit für<br>die Startlinie?<br><em>Wir auch.</em></div>
+    <p class="closing-sub">Sichere dir deinen Startplatz für den 5. City Marathon Wiesbaden 2026.</p>
+    <a href="https://xivado.com/de/events/city-marathon-wiesbaden/2026" target="_blank" class="btn-hero primary" style="font-size:14px;padding:18px 40px;">Jetzt anmelden</a>
+  </div>
+</section>
 
-<!-- SPONSOR BAR -->
-<div style="background:#080808;padding:32px 40px;display:flex;flex-wrap:wrap;align-items:center;gap:32px;justify-content:center;">
-  <span style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:rgba(255,255,255,0.25);">Presented by</span>
-  <a href="https://www.lucky-bike.de" target="_blank"><img src="https://www.lucky-bike.de/out/antares/img/assets/logo.svg" alt="Lucky Bike" style="height:36px;filter:brightness(0) invert(1);opacity:0.5;"></a>
-  <a href="https://www.backhaus-schroeer.de" target="_blank"><img src="https://sporthilfe-wiesbaden.de/wp-content/uploads/2023/03/schroeers_logo_mit_storch.png" alt="Schröer" style="height:44px;filter:brightness(0) invert(1);opacity:0.5;"></a>
-  <span style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:rgba(255,255,255,0.25);">Sponsor</span>
-  <a href="https://obermayr.com" target="_blank"><img src="https://obermayr.com/wp-content/uploads/2024/12/Logos_Business_School.png" alt="Obermayr" style="height:52px;filter:brightness(0) invert(1);opacity:0.5;"></a>
+<!-- SPONSOREN -->
+<div class="sponsors">
+  <div class="sponsors-inner">
+    <div class="sponsors-label">Partner & Sponsoren</div>
+    <div class="sponsors-grid">
+      <a href="https://www.lucky-bike.de" target="_blank"><img src="https://www.lucky-bike.de/out/antares/img/assets/logo.svg" alt="Lucky Bike"></a>
+      <a href="https://www.backhaus-schroeer.de" target="_blank"><img src="https://sporthilfe-wiesbaden.de/wp-content/uploads/2023/03/schroeers_logo_mit_storch.png" alt="Schröer" style="height:48px;"></a>
+      <a href="https://obermayr.com" target="_blank"><img src="https://obermayr.com/wp-content/uploads/2024/12/Logos_Business_School.png" alt="Obermayr" class="sponsor-obermayr" style="height:56px;"></a>
+    </div>
+  </div>
 </div>
 
 <!-- FOOTER -->
 <footer class="footer">
   <div class="footer-inner">
-    <div class="footer-top">
-      <div class="footer-logo"><img src="https://sporthilfe-wiesbaden.de/wp-content/uploads/2025/08/cmw_logo_4c-3.png" alt="City Marathon Wiesbaden"></div>
-      <div class="footer-links">
-        <a href="wicm_ausgabe_2026.html">Startnummern</a>
-        <a href="wicm_strecken_2026.html">Strecken</a>
-        <a href="wicm_anreise_2026.html">Anreise</a>
-        <a href="wicm_faq_2026.html">FAQ</a>
-        <a href="wicm_fotos_2026.html">Fotos</a>
-        <a href="wicm_teilnehmerinfo_2026_en.html">English</a>
-        <a href="mailto:info@wiesbaden-marathon.de">Kontakt</a>
-      </div>
-      <div></div>
+    <a href="wicm_index_2026.html"><img src="https://sporthilfe-wiesbaden.de/wp-content/uploads/2025/08/cmw_logo_4c-3.png" alt="CMW 2026" style="height:32px;filter:brightness(0) invert(1);opacity:0.4;"></a>
+    <div class="footer-links">
+      <a href="wicm_ausgabe_2026.html">Startnummern</a>
+      <a href="wicm_strecken_2026.html">Strecken</a>
+      <a href="wicm_anreise_2026.html">Anreise</a>
+      <a href="wicm_faq_2026.html">FAQ</a>
+      <a href="wicm_fotos_2026.html">Fotos</a>
+      <a href="wicm_teilnehmerinfo_2026_en.html">English</a>
+      <a href="mailto:info@wiesbaden-marathon.de">Kontakt</a>
     </div>
-    <div class="footer-bottom">
-      <span>City Marathon Wiesbaden 2026 · Sporthilfe Wiesbaden e.V.</span>
-      <span>Stand: 05.06.2026</span>
-    </div>
+    <div class="footer-copy">City Marathon Wiesbaden 2026 · Sporthilfe Wiesbaden e.V. · Stand: 25.06.2026</div>
   </div>
 </footer>
 
-
 <script>
+// Nav scroll
+var nav = document.getElementById('nav');
+window.addEventListener('scroll', function(){ nav.classList.toggle('scrolled', window.scrollY > 60); });
+
+// Hamburger
+document.getElementById('ham').addEventListener('click', function(){
+  document.getElementById('mob').classList.toggle('open');
+});
+
 // Countdown
 function tick() {
   var t = new Date('2026-06-20T18:45:00') - new Date();
-  if (t <= 0) { document.querySelectorAll('.cd-num').forEach(function(el){el.textContent='0';}); return; }
+  if (t <= 0) { return; }
   var d = Math.floor(t/86400000);
   var h = Math.floor((t%86400000)/3600000);
   var m = Math.floor((t%3600000)/60000);
-  var el = document.getElementById('cd-days'); if(el) el.textContent = d;
-  var el2 = document.getElementById('intro-days'); if(el2) el2.textContent = d;
+  var e = document.getElementById('cd-days'); if(e) e.textContent = d;
+  var e2 = document.getElementById('cd2-days'); if(e2) e2.textContent = d;
+  var e3 = document.getElementById('cd2-hours'); if(e3) e3.textContent = h;
+  var e4 = document.getElementById('cd2-mins'); if(e4) e4.textContent = m;
 }
-tick(); setInterval(tick, 60000);
-
-// Hamburger
-var ham = document.getElementById('hamburger');
-var mob = document.getElementById('mobile-menu');
-if (ham) ham.addEventListener('click', function() { mob.classList.toggle('open'); });
-
-// Active nav
-var sections = document.querySelectorAll('[data-nav]');
-var navLinks = document.querySelectorAll('.nav-links a[href^="#"], .nav-links a[data-section]');
+tick(); setInterval(tick, 30000);
 </script>
-
 </body>
 </html>
